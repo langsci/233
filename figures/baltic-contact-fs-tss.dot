@@ -1,0 +1,93 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=30];
+  bel [pos="2300.0,2650.0", width="0.1", height="0.05"];
+  dan [pos="1500.0,2800.0", width="0.1", height="0.05"];
+  deu [pos="1550.0,2450.0", width="0.1", height="0.05"];
+  ekk [pos="2300.0,2950.0", width="0.1", height="0.05"];
+  eng [pos="1000.0,2650.0", width="0.1", height="0.05"];
+  fin [pos="2250.0,3100.0", width="0.1", height="0.05"];
+  isl [pos="950.0,3250.0", width="0.1", height="0.05"];
+  krl [pos="2600.0,3200.0", width="0.1", height="0.05"];
+  lav [pos="2200.0,2840.0", width="0.1", height="0.05"];
+  lit [pos="2200.0,2750.0", width="0.1", height="0.05"];
+  liv [pos="2075.0,2870.0", width="0.1", height="0.05"];
+  nld [pos="1300.0,2625.0", width="0.1", height="0.05"];
+  nor [pos="1400.0,3050.0", width="0.1", height="0.05"];
+  olo [pos="2650.0,3050.0", width="0.1", height="0.05"];
+  pol [pos="2000.0,2600.0", width="0.1", height="0.05"];
+  rus [pos="2900.0,2800.0", width="0.1", height="0.05"];
+  sjd [pos="2750.0,3350.0", width="0.1", height="0.05"];
+  sma [pos="1700.0,3233.5", width="0.1", height="0.05"];
+  sme [pos="2200.0,3450.0", width="0.1", height="0.05"];
+  smj [pos="1825.0,3400.0", width="0.1", height="0.05"];
+  smn [pos="2350.0,3350.0", width="0.1", height="0.05"];
+  sms [pos="2433.5,3400.0", width="0.1", height="0.05"];
+  swe [pos="1750.0,3000.0", width="0.1", height="0.05"];
+  vep [pos="2750.0,3000.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  fin -> krl [color="#339933ff",penwidth="4"];
+  fin -> olo [color="#339933b4",penwidth="2"];
+  fin -> ekk [color="#339933ff",penwidth="4"];
+  fin -> sme [color="#339933d6",penwidth="3"];
+  fin -> smn [color="#339933df",penwidth="3"];
+  krl -> olo [color="#339933ff",penwidth="3"];
+  krl -> vep [color="#339933bb",penwidth="2"];
+  krl -> sms [color="#33993384",penwidth="2"];
+  olo -> vep [color="#339933ff",penwidth="4"];
+  vep -> ekk [color="#3399338e",penwidth="2"];
+  vep -> liv [color="#33993382",penwidth="2"];
+  vep -> sjd [color="#339933bf",penwidth="2"];
+  ekk -> isl [color="#339933ff",penwidth="3"];
+  liv -> sms [color="#3399338a",penwidth="2"];
+  liv -> lav [color="#339933ff",penwidth="3"];
+  sma -> smj [color="#339933ff",penwidth="3"];
+  sme -> smn [color="#339933ff",penwidth="3"];
+  smn -> sms [color="#339933ff",penwidth="4"];
+  nor -> swe [color="#339933ff",penwidth="5"];
+  nor -> dan [color="#339933ff",penwidth="6"];
+  swe -> deu [color="#339933e6",penwidth="3"];
+  dan -> deu [color="#339933c2",penwidth="2"];
+  deu -> nld [color="#339933ff",penwidth="5"];
+  rus -> bel [color="#339933ff",penwidth="5"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  rus -> olo [color="#007e56ff",penwidth="3"];
+  ekk -> liv [color="#007e56ff",penwidth="4"];
+  deu -> liv [color="#007e56c0",penwidth="2"];
+  sme -> sma [color="#007e56fd",penwidth="3"];
+  sms -> sma [color="#007e56b5",penwidth="2"];
+  nor -> sma [color="#007e56ff",penwidth="3"];
+  sme -> smj [color="#007e56ff",penwidth="3"];
+  smn -> smj [color="#007e56ec",penwidth="3"];
+  nor -> smj [color="#007e56bf",penwidth="2"];
+  sme -> sjd [color="#007e56f4",penwidth="3"];
+  sms -> sjd [color="#007e56ff",penwidth="4"];
+  rus -> sjd [color="#007e56fd",penwidth="3"];
+  nor -> isl [color="#007e56ff",penwidth="3"];
+  nor -> nld [color="#007e56fb",penwidth="3"];
+  nor -> eng [color="#007e56f8",penwidth="3"];
+  swe -> isl [color="#007e56f2",penwidth="3"];
+  deu -> rus [color="#007e5693",penwidth="2"];
+  nld -> eng [color="#007e56f2",penwidth="3"];
+  nld -> lav [color="#007e5694",penwidth="2"];
+  lav -> lit [color="#007e56ff",penwidth="5"];
+  rus -> lav [color="#007e56f2",penwidth="3"];
+  pol -> lit [color="#007e56ff",penwidth="3"];
+  rus -> pol [color="#007e56d3",penwidth="3"];
+  bel -> pol [color="#007e56ff",penwidth="5"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

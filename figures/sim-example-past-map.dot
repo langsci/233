@@ -1,0 +1,125 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=blue, fontsize=20];
+  L0lok [pos="600.0,800.0", width="0.1", height="0.05"];
+  L0loq [pos="400.0,800.0", width="0.1", height="0.05"];
+  L0lup [pos="400.0,400.0", width="0.1", height="0.05"];
+  L0luz [pos="600.0,600.0", width="0.1", height="0.05"];
+  L0z [pos="800.0,600.0", width="0.1", height="0.05"];
+  L1fabew [pos="800.0,1800.0", width="0.1", height="0.05"];
+  L1fabexex [pos="1000.0,1600.0", width="0.1", height="0.05"];
+  L1fabexez [pos="800.0,1600.0", width="0.1", height="0.05"];
+  L1fabexi [pos="1000.0,1800.0", width="0.1", height="0.05"];
+  L1fabu [pos="600.0,1400.0", width="0.1", height="0.05"];
+  L1faw [pos="800.0,1200.0", width="0.1", height="0.05"];
+  L1fe [pos="800.0,1000.0", width="0.1", height="0.05"];
+  L1ra [pos="800.0,800.0", width="0.1", height="0.05"];
+  L1rev [pos="600.0,1000.0", width="0.1", height="0.05"];
+  L1rez [pos="600.0,1200.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+  L0loq -> L0lok [color="#000000ff",penwidth="7"];
+  L0lup -> L0lok [color="#000000ff",penwidth="5"];
+  L0luz -> L0lok [color="#000000fd",penwidth="5"];
+  L0z -> L0lok [color="#000000e9",penwidth="5"];
+  L1fabew -> L0lok [color="#0000004c",penwidth="3"];
+  L1fabexex -> L0lok [color="#00000047",penwidth="3"];
+  L1fabexez -> L0lok [color="#00000046",penwidth="3"];
+  L1fabexi -> L0lok [color="#00000051",penwidth="3"];
+  L1fabu -> L0lok [color="#0000008a",penwidth="4"];
+  L1faw -> L0lok [color="#00000070",penwidth="4"];
+  L1fe -> L0lok [color="#00000089",penwidth="4"];
+  L1ra -> L0lok [color="#000000cc",penwidth="4"];
+  L1rez -> L0lok [color="#000000ff",penwidth="5"];
+  L0lup -> L0loq [color="#000000ff",penwidth="5"];
+  L0luz -> L0loq [color="#000000ff",penwidth="5"];
+  L0z -> L0loq [color="#000000f6",penwidth="5"];
+  L1fabew -> L0loq [color="#00000043",penwidth="3"];
+  L1fabexex -> L0loq [color="#00000038",penwidth="3"];
+  L1fabexez -> L0loq [color="#00000036",penwidth="3"];
+  L1fabexi -> L0loq [color="#00000046",penwidth="3"];
+  L1fabu -> L0loq [color="#0000007a",penwidth="4"];
+  L1faw -> L0loq [color="#00000062",penwidth="3"];
+  L1fe -> L0loq [color="#00000076",penwidth="4"];
+  L1ra -> L0loq [color="#000000c6",penwidth="4"];
+  L1rez -> L0loq [color="#000000e8",penwidth="5"];
+  L0luz -> L0lup [color="#000000ff",penwidth="7"];
+  L0z -> L0lup [color="#000000ff",penwidth="5"];
+  L1ra -> L0lup [color="#000000b2",penwidth="4"];
+  L1rev -> L0lup [color="#00000007",penwidth="1"];
+  L0z -> L0luz [color="#000000ff",penwidth="5"];
+  L1ra -> L0luz [color="#000000b1",penwidth="4"];
+  L1rev -> L0luz [color="#00000007",penwidth="1"];
+  L1fabew -> L0z [color="#0000000e",penwidth="1"];
+  L1fabexex -> L0z [color="#0000000f",penwidth="1"];
+  L1fabexez -> L0z [color="#0000000f",penwidth="1"];
+  L1fabexi -> L0z [color="#00000014",penwidth="1"];
+  L1fabu -> L0z [color="#00000018",penwidth="1"];
+  L1faw -> L0z [color="#0000000f",penwidth="1"];
+  L1fe -> L0z [color="#00000015",penwidth="1"];
+  L1rev -> L0z [color="#0000002c",penwidth="2"];
+  L1rez -> L0z [color="#00000022",penwidth="2"];
+  L1fabexex -> L1fabew [color="#000000ff",penwidth="7"];
+  L1fabexez -> L1fabew [color="#000000ff",penwidth="7"];
+  L1fabexi -> L1fabew [color="#000000ff",penwidth="6"];
+  L1fabu -> L1fabew [color="#000000ff",penwidth="6"];
+  L1faw -> L1fabew [color="#000000ff",penwidth="5"];
+  L1fe -> L1fabew [color="#000000ae",penwidth="4"];
+  L1ra -> L1fabew [color="#0000005a",penwidth="3"];
+  L1rev -> L1fabew [color="#00000093",penwidth="4"];
+  L1rez -> L1fabew [color="#0000009e",penwidth="4"];
+  L1fabexez -> L1fabexex [color="#000000ff",penwidth="7"];
+  L1fabexi -> L1fabexex [color="#000000ff",penwidth="6"];
+  L1fabu -> L1fabexex [color="#000000ff",penwidth="6"];
+  L1faw -> L1fabexex [color="#000000ff",penwidth="5"];
+  L1fe -> L1fabexex [color="#000000b5",penwidth="4"];
+  L1ra -> L1fabexex [color="#00000057",penwidth="3"];
+  L1rev -> L1fabexex [color="#00000097",penwidth="4"];
+  L1rez -> L1fabexex [color="#0000009a",penwidth="4"];
+  L1fabexi -> L1fabexez [color="#000000ff",penwidth="6"];
+  L1fabu -> L1fabexez [color="#000000ff",penwidth="6"];
+  L1faw -> L1fabexez [color="#000000ff",penwidth="5"];
+  L1fe -> L1fabexez [color="#000000b6",penwidth="4"];
+  L1ra -> L1fabexez [color="#00000057",penwidth="3"];
+  L1rev -> L1fabexez [color="#00000099",penwidth="4"];
+  L1rez -> L1fabexez [color="#0000009b",penwidth="4"];
+  L1fabu -> L1fabexi [color="#000000ff",penwidth="6"];
+  L1faw -> L1fabexi [color="#000000ff",penwidth="5"];
+  L1fe -> L1fabexi [color="#000000b6",penwidth="4"];
+  L1ra -> L1fabexi [color="#00000063",penwidth="3"];
+  L1rev -> L1fabexi [color="#0000009e",penwidth="4"];
+  L1rez -> L1fabexi [color="#000000a1",penwidth="4"];
+  L1faw -> L1fabu [color="#000000ff",penwidth="5"];
+  L1fe -> L1fabu [color="#000000e2",penwidth="5"];
+  L1ra -> L1fabu [color="#0000009b",penwidth="4"];
+  L1rev -> L1fabu [color="#000000ff",penwidth="5"];
+  L1ra -> L1faw [color="#0000006e",penwidth="4"];
+  L1rev -> L1faw [color="#000000ff",penwidth="5"];
+  L1rez -> L1faw [color="#000000ff",penwidth="5"];
+  L1ra -> L1fe [color="#0000008a",penwidth="4"];
+  L1rez -> L1fe [color="#000000ff",penwidth="5"];
+  L1rev -> L1ra [color="#000000ff",penwidth="5"];
+  L1rez -> L1ra [color="#000000f3",penwidth="5"];
+  L1rez -> L1rev [color="#000000ff",penwidth="6"];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  L0z -> L1ra [color="#80d100ff",penwidth="5"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  L1rev -> L0lok [color="#007e56ff",penwidth="6"];
+  L0loq -> L1rev [color="#007e56ff",penwidth="6"];
+  L1rez -> L1fabu [color="#007e56ff",penwidth="7"];
+  L1fe -> L1faw [color="#007e56ff",penwidth="7"];
+  L1rev -> L1fe [color="#007e56ff",penwidth="6"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

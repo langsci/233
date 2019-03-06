@@ -1,0 +1,110 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=60];
+  Chukotko_Kamchatkan [pos="7600.0,3100.0", shape=box, width="0.1", height="0.05"];
+  Enets_Nenets [pos="4800.0,3350.0", shape=box, width="0.1", height="0.05"];
+  Eskimo_Aleut [pos="8500.0,3000.0", shape=box, width="0.1", height="0.05"];
+  Khalkha_Buriat [pos="6000.0,2500.0", shape=box, width="0.1", height="0.05"];
+  Mongolic [pos="6100.0,2250.0", shape=box, width="0.1", height="0.05"];
+  Samoyedic [pos="4800.0,3100.0", shape=box, width="0.1", height="0.05"];
+  Tungusic [pos="6500.0,2600.0", shape=box, width="0.1", height="0.05"];
+  Turkic [pos="5350.0,2500.0", shape=box, width="0.1", height="0.05"];
+  Uralic [pos="4100.0,2700.0", shape=box, width="0.1", height="0.05"];
+  Yukaghir [pos="7000.0,3300.0", shape=box, width="0.1", height="0.05"];
+  ain [pos="7050.0,2150.0", width="0.1", height="0.05"];
+  ale [pos="8350.0,2700.0", width="0.1", height="0.05"];
+  bua [pos="5980.0,2680.0", width="0.1", height="0.05"];
+  ckt [pos="7850.0,3350.0", width="0.1", height="0.05"];
+  cmn [pos="6000.0,1700.0", width="0.1", height="0.05"];
+  enf [pos="5250.0,3450.0", width="0.1", height="0.05"];
+  ess [pos="8050.0,3160.0", width="0.1", height="0.05"];
+  evn [pos="6450.0,2800.0", width="0.1", height="0.05"];
+  gld [pos="6650.0,2475.0", width="0.1", height="0.05"];
+  itl [pos="7375.0,2900.0", width="0.1", height="0.05"];
+  jpn [pos="6900.0,1850.0", width="0.1", height="0.05"];
+  kaz [pos="4500.0,2500.0", width="0.1", height="0.05"];
+  kca [pos="4250.0,3250.0", width="0.1", height="0.05"];
+  ket [pos="5350.0,3100.0", width="0.1", height="0.05"];
+  khk [pos="5850.0,2350.0", width="0.1", height="0.05"];
+  kor [pos="6400.0,1875.0", width="0.1", height="0.05"];
+  mnc [pos="6375.0,2370.0", width="0.1", height="0.05"];
+  mns [pos="4100.0,3100.0", width="0.1", height="0.05"];
+  nio [pos="5650.0,3550.0", width="0.1", height="0.05"];
+  niv [pos="6900.0,2666.5", width="0.1", height="0.05"];
+  rus [pos="3800.0,2800.0", width="0.1", height="0.05"];
+  sah [pos="6400.0,3100.0", width="0.1", height="0.05"];
+  sel [pos="5100.0,3250.0", width="0.1", height="0.05"];
+  xal [pos="3900.0,2316.5", width="0.1", height="0.05"];
+  ykg [pos="7050.0,3450.0", width="0.1", height="0.05"];
+  yrk [pos="4800.0,3500.0", width="0.1", height="0.05"];
+  yux [pos="6700.0,3287.5", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  itl -> Enets_Nenets [color="#339933af",penwidth="4"];
+  xal -> sah [color="#339933f2",penwidth="6"];
+  enf -> nio [color="#339933d4",penwidth="6"];
+  yrk -> nio [color="#339933ff",penwidth="6"];
+  yrk -> sel [color="#33993381",penwidth="4"];
+  nio -> sel [color="#33993399",penwidth="4"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  rus -> Chukotko_Kamchatkan [color="#339933ff",penwidth="8"];
+  Tungusic -> itl [color="#339933dd",penwidth="6"];
+  rus -> Eskimo_Aleut [color="#339933ff",penwidth="6"];
+  bua -> sah [color="#339933ff",penwidth="6"];
+  khk -> mnc [color="#339933ff",penwidth="6"];
+  kaz -> xal [color="#3399338a",penwidth="4"];
+  evn -> nio [color="#3399339d",penwidth="4"];
+  evn -> rus [color="#339933ff",penwidth="6"];
+  mnc -> jpn [color="#33993387",penwidth="4"];
+  sah -> rus [color="#339933ff",penwidth="6"];
+  rus -> enf [color="#339933d9",penwidth="6"];
+  mns -> yrk [color="#33993386",penwidth="4"];
+  kca -> sel [color="#33993388",penwidth="4"];
+  sel -> cmn [color="#33993388",penwidth="4"];
+  sel -> niv [color="#339933a1",penwidth="4"];
+  rus -> sel [color="#339933be",penwidth="4"];
+  rus -> mns [color="#3399338c",penwidth="4"];
+  rus -> Yukaghir [color="#339933b6",penwidth="4"];
+  jpn -> ain [color="#339933c5",penwidth="4"];
+  jpn -> cmn [color="#339933b7",penwidth="4"];
+  cmn -> kor [color="#339933f7",penwidth="6"];
+  jpn -> kor [color="#339933ff",penwidth="6"];
+  rus -> ket [color="#339933f6",penwidth="6"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+  Chukotko_Kamchatkan -> ckt [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Chukotko_Kamchatkan -> itl [color="#000000ff",arrowhead="vee",penwidth="14"];
+  Eskimo_Aleut -> ale [color="#000000ff",arrowhead="vee",penwidth="14"];
+  Eskimo_Aleut -> ess [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Mongolic -> Khalkha_Buriat [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Mongolic -> xal [color="#000000ff",arrowhead="vee",penwidth="14"];
+  Khalkha_Buriat -> bua [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Khalkha_Buriat -> khk [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Tungusic -> evn [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Tungusic -> gld [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Tungusic -> mnc [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Turkic -> kaz [color="#000000ff",arrowhead="vee",penwidth="14"];
+  Turkic -> sah [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Uralic -> Samoyedic [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Uralic -> kca [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Uralic -> mns [color="#000000ff",arrowhead="vee",penwidth="12"];
+  Samoyedic -> Enets_Nenets [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Samoyedic -> nio [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Samoyedic -> sel [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Enets_Nenets -> enf [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Enets_Nenets -> yrk [color="#000000ff",arrowhead="vee",penwidth="10"];
+  Yukaghir -> ykg [color="#000000ff",arrowhead="vee",penwidth="14"];
+  Yukaghir -> yux [color="#000000ff",arrowhead="vee",penwidth="10"];
+}
+}

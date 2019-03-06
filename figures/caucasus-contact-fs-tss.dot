@@ -1,0 +1,86 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=20];
+  abk [pos="3020.0,2130.0", width="0.1", height="0.05"];
+  ady [pos="3030.0,2261.5", width="0.1", height="0.05"];
+  arb [pos="3300.0,1550.0", width="0.1", height="0.05"];
+  ava [pos="3300.0,2100.0", width="0.1", height="0.05"];
+  azj [pos="3500.0,1900.0", width="0.1", height="0.05"];
+  che [pos="3300.0,2210.0", width="0.1", height="0.05"];
+  dar [pos="3470.0,2120.0", width="0.1", height="0.05"];
+  ddo [pos="3287.5,2030.0", width="0.1", height="0.05"];
+  heb [pos="2741.5,1575.0", width="0.1", height="0.05"];
+  hye [pos="3200.0,2020.0", width="0.1", height="0.05"];
+  kat [pos="3170.0,2100.0", width="0.1", height="0.05"];
+  kaz [pos="4400.0,2450.0", width="0.1", height="0.05"];
+  kmr [pos="3100.0,1950.0", width="0.1", height="0.05"];
+  lbe [pos="3400.0,2070.0", width="0.1", height="0.05"];
+  lez [pos="3391.5,2010.0", width="0.1", height="0.05"];
+  oss [pos="3190.0,2170.0", width="0.1", height="0.05"];
+  pbu [pos="4350.0,1650.0", width="0.1", height="0.05"];
+  pes [pos="3700.0,1630.0", width="0.1", height="0.05"];
+  rus [pos="3000.0,2500.0", width="0.1", height="0.05"];
+  tur [pos="2750.0,1950.0", width="0.1", height="0.05"];
+  ukr [pos="2750.0,2500.0", width="0.1", height="0.05"];
+  uzn [pos="4400.0,1900.0", width="0.1", height="0.05"];
+  xal [pos="3540.0,2370.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  xal -> azj [color="#33993391",penwidth="2"];
+  rus -> ukr [color="#339933ff",penwidth="6"];
+  tur -> kaz [color="#339933ff",penwidth="3"];
+  azj -> uzn [color="#339933ff",penwidth="4"];
+  azj -> pes [color="#339933af",penwidth="2"];
+  azj -> dar [color="#33993381",penwidth="2"];
+  azj -> arb [color="#33993386",penwidth="2"];
+  pes -> pbu [color="#339933ff",penwidth="4"];
+  pes -> arb [color="#339933ee",penwidth="3"];
+  oss -> ava [color="#339933aa",penwidth="2"];
+  pbu -> kmr [color="#339933ac",penwidth="2"];
+  pbu -> lez [color="#339933bd",penwidth="2"];
+  pbu -> arb [color="#33993381",penwidth="2"];
+  kmr -> che [color="#339933b4",penwidth="2"];
+  hye -> kat [color="#339933ad",penwidth="2"];
+  hye -> abk [color="#33993392",penwidth="2"];
+  kat -> abk [color="#339933cc",penwidth="3"];
+  kat -> lez [color="#3399338e",penwidth="2"];
+  abk -> ady [color="#339933c1",penwidth="2"];
+  ady -> lez [color="#339933e7",penwidth="3"];
+  che -> ava [color="#339933ff",penwidth="3"];
+  dar -> lbe [color="#339933ff",penwidth="3"];
+  dar -> ddo [color="#3399339c",penwidth="2"];
+  dar -> ava [color="#3399339c",penwidth="2"];
+  lbe -> lez [color="#339933da",penwidth="3"];
+  lbe -> ddo [color="#339933ac",penwidth="2"];
+  lbe -> ava [color="#339933be",penwidth="2"];
+  lez -> ava [color="#339933a2",penwidth="2"];
+  ddo -> ava [color="#339933ff",penwidth="4"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  rus -> xal [color="#007e56c9",penwidth="2"];
+  kaz -> xal [color="#007e5692",penwidth="2"];
+  rus -> oss [color="#007e56de",penwidth="3"];
+  azj -> tur [color="#007e56ff",penwidth="6"];
+  kmr -> azj [color="#007e56a4",penwidth="2"];
+  azj -> lez [color="#007e56ff",penwidth="3"];
+  uzn -> kaz [color="#007e56ff",penwidth="5"];
+  uzn -> pes [color="#007e56c4",penwidth="2"];
+  pes -> oss [color="#007e56ab",penwidth="2"];
+  pes -> kmr [color="#007e56ff",penwidth="4"];
+  pes -> hye [color="#007e56a3",penwidth="2"];
+  kmr -> hye [color="#007e5685",penwidth="2"];
+  arb -> heb [color="#007e56ff",penwidth="4"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

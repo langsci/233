@@ -1,0 +1,41 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=blue, fontsize=20];
+  L0lo [pos="600.0,800.0", width="0.1", height="0.05"];
+  L0lu [pos="600.0,600.0", width="0.1", height="0.05"];
+  L0z [pos="800.0,600.0", width="0.1", height="0.05"];
+  L1fab [pos="600.0,1400.0", width="0.1", height="0.05"];
+  L1faw [pos="800.0,1200.0", width="0.1", height="0.05"];
+  L1fe [pos="800.0,1000.0", width="0.1", height="0.05"];
+  L1r [pos="600.0,1000.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+  L0lu -> L0lo [color="#000000ff",penwidth="7"];
+  L0z -> L0lo [color="#000000ff",penwidth="7"];
+  L1fab -> L0lo [color="#0000000f",penwidth="1"];
+  L1faw -> L0lo [color="#0000000f",penwidth="1"];
+  L1fe -> L0lo [color="#00000011",penwidth="1"];
+  L0z -> L0lu [color="#000000ff",penwidth="7"];
+  L1faw -> L1fab [color="#000000ff",penwidth="7"];
+  L1fe -> L1fab [color="#000000ff",penwidth="6"];
+  L1r -> L1fab [color="#000000ff",penwidth="6"];
+  L1fe -> L1faw [color="#000000ff",penwidth="6"];
+  L1r -> L1faw [color="#000000ff",penwidth="6"];
+  L1r -> L1fe [color="#000000ff",penwidth="6"];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  L1r -> L0lo [color="#007e56d4",penwidth="5"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

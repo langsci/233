@@ -1,0 +1,134 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=20];
+  Abkhaz_Adyge [pos="2880.0,2200.0", shape=box, width="0.1", height="0.05"];
+  Afro_Asiatic [pos="2900.0,1500.0", shape=box, width="0.1", height="0.05"];
+  Avar_Andic_Tsezic [pos="3420.0,2170.0", shape=box, width="0.1", height="0.05"]; 
+  Balto_Slavic [pos="2800.0,2400.0", shape=box, width="0.1", height="0.05"];
+  Central_Iranian_PBS [pos="3700.0,2000.0", shape=box, width="0.1", height="0.05"];
+  Daghestanian [pos="3650.0,2100.0", shape=box, width="0.1", height="0.05"];
+  Indo_European [pos="2830.0,2320.0", shape=box, width="0.1", height="0.05"];
+  Indo_Iranian [pos="3900.0,2450.0", shape=box, width="0.1", height="0.05"];
+  Nakh_Daghestanian [pos="3400.0,2300.0", shape=box, width="0.1", height="0.05"];
+  Turkic [pos="3950.0,2010.0", shape=box, width="0.1", height="0.05"];
+  West_Oghuz [pos="3650.0,1800.0", shape=box, width="0.1", height="0.05"];
+  abk [pos="3020.0,2130.0", width="0.1", height="0.05"];
+  ady [pos="3030.0,2261.5", width="0.1", height="0.05"];
+  arb [pos="3300.0,1550.0", width="0.1", height="0.05"];
+  ava [pos="3300.0,2100.0", width="0.1", height="0.05"];
+  azj [pos="3500.0,1900.0", width="0.1", height="0.05"];
+  che [pos="3300.0,2210.0", width="0.1", height="0.05"];
+  dar [pos="3470.0,2120.0", width="0.1", height="0.05"];
+  ddo [pos="3287.5,2030.0", width="0.1", height="0.05"];
+  heb [pos="2741.5,1575.0", width="0.1", height="0.05"];
+  hye [pos="3200.0,2020.0", width="0.1", height="0.05"];
+  kat [pos="3170.0,2100.0", width="0.1", height="0.05"];
+  kaz [pos="4400.0,2450.0", width="0.1", height="0.05"];
+  kmr [pos="3100.0,1950.0", width="0.1", height="0.05"];
+  lbe [pos="3400.0,2070.0", width="0.1", height="0.05"];
+  lez [pos="3391.5,2010.0", width="0.1", height="0.05"];
+  oss [pos="3190.0,2170.0", width="0.1", height="0.05"];
+  pbu [pos="4350.0,1650.0", width="0.1", height="0.05"];
+  pes [pos="3700.0,1630.0", width="0.1", height="0.05"];
+  rus [pos="3000.0,2500.0", width="0.1", height="0.05"];
+  tur [pos="2750.0,1950.0", width="0.1", height="0.05"];
+  ukr [pos="2750.0,2500.0", width="0.1", height="0.05"];
+  uzn [pos="4400.0,1900.0", width="0.1", height="0.05"];
+  xal [pos="3540.0,2370.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  oss -> che [color="#80d100ff",penwidth="4"];
+  kaz -> xal [color="#80d100ff",penwidth="4"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  rus -> abk [color="#007e56ff",penwidth="4"];
+  kat -> abk [color="#007e56ff",penwidth="4"];
+  rus -> ady [color="#007e56ff",penwidth="4"];
+  ady -> oss [color="#007e56ff",penwidth="4"];
+  azj -> ady [color="#007e56ff",penwidth="4"];
+  kaz -> ady [color="#007e56ff",penwidth="4"];
+  arb -> kmr [color="#007e56ff",penwidth="4"];
+  arb -> pbu [color="#007e56ff",penwidth="4"];
+  arb -> pes [color="#007e56ff",penwidth="4"];
+  arb -> ava [color="#007e56ff",penwidth="4"];
+  arb -> ddo [color="#007e56ff",penwidth="4"];
+  arb -> dar [color="#007e56ff",penwidth="4"];
+  arb -> lbe [color="#007e56ff",penwidth="4"];
+  arb -> lez [color="#007e56ff",penwidth="4"];
+  arb -> azj [color="#007e56ff",penwidth="4"];
+  arb -> tur [color="#007e56ff",penwidth="4"];
+  rus -> oss [color="#007e56ff",penwidth="4"];
+  rus -> ava [color="#007e56ff",penwidth="4"];
+  rus -> ddo [color="#007e56ff",penwidth="4"];
+  rus -> dar [color="#007e56ff",penwidth="4"];
+  rus -> lbe [color="#007e56ff",penwidth="4"];
+  rus -> lez [color="#007e56ff",penwidth="4"];
+  rus -> che [color="#007e56ff",penwidth="4"];
+  rus -> kaz [color="#007e56ff",penwidth="4"];
+  rus -> xal [color="#007e56ff",penwidth="4"];
+  Central_Iranian_PBS -> hye [color="#007e56ff",penwidth="4"];
+  tur -> kmr [color="#007e56ff",penwidth="4"];
+  oss -> ava [color="#007e56ff",penwidth="4"];
+  Turkic -> oss [color="#007e56ff",penwidth="4"];
+  pes -> pbu [color="#007e56ff",penwidth="4"];
+  pes -> hye [color="#007e56ff",penwidth="4"];
+  pes -> che [color="#007e56ff",penwidth="4"];
+  pes -> azj [color="#007e56ff",penwidth="4"];
+  pes -> tur [color="#007e56ff",penwidth="4"];
+  pes -> uzn [color="#007e56ff",penwidth="4"];
+  pes -> kat [color="#007e56ff",penwidth="4"];
+  kat -> hye [color="#007e56ff",penwidth="4"];
+  ava -> ddo [color="#007e56ff",penwidth="4"];
+  ava -> dar [color="#007e56ff",penwidth="4"];
+  ava -> lbe [color="#007e56ff",penwidth="4"];
+  kaz -> ava [color="#007e56ff",penwidth="4"];
+  kat -> ava [color="#007e56ff",penwidth="4"];
+  azj -> ddo [color="#007e56ff",penwidth="4"];
+  kat -> ddo [color="#007e56ff",penwidth="4"];
+  azj -> dar [color="#007e56ff",penwidth="4"];
+  kaz -> dar [color="#007e56ff",penwidth="4"];
+  azj -> lbe [color="#007e56ff",penwidth="4"];
+  azj -> lez [color="#007e56ff",penwidth="4"];
+  kaz -> che [color="#007e56ff",penwidth="4"];
+  azj -> kat [color="#007e56ff",penwidth="4"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+  Abkhaz_Adyge -> abk [color="#000000ff",penwidth="4"];
+  Abkhaz_Adyge -> ady [color="#000000ff",penwidth="4"];
+  Afro_Asiatic -> arb [color="#000000ff",penwidth="4"];
+  Afro_Asiatic -> heb [color="#000000ff",penwidth="4"];
+  Indo_European -> Balto_Slavic [color="#000000ff",penwidth="4"];
+  Indo_European -> Indo_Iranian [color="#000000ff",penwidth="4"];
+  Indo_European -> hye [color="#000000ff",penwidth="4"];
+  Balto_Slavic -> rus [color="#000000ff",penwidth="4"];
+  Balto_Slavic -> ukr [color="#000000ff",penwidth="4"];
+  Indo_Iranian -> Central_Iranian_PBS [color="#000000ff",penwidth="4"];
+  Indo_Iranian -> pbu [color="#000000ff",penwidth="4"];
+  Indo_Iranian -> pes [color="#000000ff",penwidth="4"];
+  Central_Iranian_PBS -> kmr [color="#000000ff",penwidth="4"];
+  Central_Iranian_PBS -> oss [color="#000000ff",penwidth="4"];
+  Nakh_Daghestanian -> Daghestanian [color="#000000ff",penwidth="4"];
+  Nakh_Daghestanian -> che [color="#000000ff",penwidth="4"];
+  Daghestanian -> Avar_Andic_Tsezic [color="#000000ff",penwidth="4"];
+  Daghestanian -> dar [color="#000000ff",penwidth="4"];
+  Daghestanian -> lbe [color="#000000ff",penwidth="4"];
+  Daghestanian -> lez [color="#000000ff",penwidth="4"];
+  Avar_Andic_Tsezic -> ava [color="#000000ff",penwidth="4"];
+  Avar_Andic_Tsezic -> ddo [color="#000000ff",penwidth="4"];
+  Turkic -> West_Oghuz [color="#000000ff",penwidth="4"];
+  Turkic -> kaz [color="#000000ff",penwidth="4"];
+  Turkic -> uzn [color="#000000ff",penwidth="4"];
+  West_Oghuz -> azj [color="#000000ff",penwidth="4"];
+  West_Oghuz -> tur [color="#000000ff",penwidth="4"];
+}
+}

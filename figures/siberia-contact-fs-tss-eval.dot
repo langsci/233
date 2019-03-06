@@ -1,0 +1,153 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=60];
+  ain [pos="7050.0,2150.0", width="0.1", height="0.05"];
+  ale [pos="8350.0,2700.0", width="0.1", height="0.05"];
+  bua [pos="5980.0,2680.0", width="0.1", height="0.05"];
+  ckt [pos="7850.0,3350.0", width="0.1", height="0.05"];
+  cmn [pos="6000.0,1700.0", width="0.1", height="0.05"];
+  enf [pos="5250.0,3450.0", width="0.1", height="0.05"];
+  ess [pos="8050.0,3160.0", width="0.1", height="0.05"];
+  evn [pos="6450.0,2800.0", width="0.1", height="0.05"];
+  gld [pos="6650.0,2475.0", width="0.1", height="0.05"];
+  itl [pos="7375.0,2900.0", width="0.1", height="0.05"];
+  jpn [pos="6900.0,1850.0", width="0.1", height="0.05"];
+  kaz [pos="4500.0,2500.0", width="0.1", height="0.05"];
+  kca [pos="4250.0,3250.0", width="0.1", height="0.05"];
+  ket [pos="5350.0,3100.0", width="0.1", height="0.05"];
+  khk [pos="5850.0,2350.0", width="0.1", height="0.05"];
+  kor [pos="6400.0,1875.0", width="0.1", height="0.05"];
+  mnc [pos="6375.0,2370.0", width="0.1", height="0.05"];
+  mns [pos="4100.0,3100.0", width="0.1", height="0.05"];
+  nio [pos="5650.0,3550.0", width="0.1", height="0.05"];
+  niv [pos="6900.0,2666.5", width="0.1", height="0.05"];
+  rus [pos="3800.0,2800.0", width="0.1", height="0.05"];
+  sah [pos="6400.0,3100.0", width="0.1", height="0.05"];
+  sel [pos="5100.0,3250.0", width="0.1", height="0.05"];
+  xal [pos="3900.0,2316.5", width="0.1", height="0.05"];
+  ykg [pos="7050.0,3450.0", width="0.1", height="0.05"];
+  yrk [pos="4800.0,3500.0", width="0.1", height="0.05"];
+  yux [pos="6700.0,3287.5", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  mns -> kca [color="#339933ff",penwidth="4"];
+  mns -> yrk [color="#339933ff",penwidth="4"];
+  sel -> nio [color="#339933ff",penwidth="4"];
+  sel -> rus [color="#ff0000ff",penwidth="4"];
+  enf -> nio [color="#339933ff",penwidth="4"];
+  enf -> rus [color="#ff0000ff",penwidth="4"];
+  ykg -> yux [color="#339933ff",penwidth="4"];
+  ykg -> rus [color="#ff0000ff",penwidth="4"];
+  ket -> rus [color="#ff0000ff",penwidth="4"];
+  rus -> sah [color="#ff0000ff",penwidth="4"];
+  rus -> evn [color="#ff0000ff",penwidth="4"];
+  rus -> itl [color="#ff0000ff",penwidth="4"];
+  rus -> ale [color="#ff0000ff",penwidth="4"];
+  kaz -> sah [color="#339933ff",penwidth="4"];
+  sah -> bua [color="#ff0000ff",penwidth="4"];
+  khk -> bua [color="#339933ff",penwidth="4"];
+  khk -> xal [color="#339933ff",penwidth="4"];
+  bua -> xal [color="#339933ff",penwidth="4"];
+  evn -> gld [color="#339933ff",penwidth="4"];
+  evn -> mnc [color="#339933ff",penwidth="4"];
+  ain -> jpn [color="#ff0000ff",penwidth="4"];
+  kor -> jpn [color="#808080ff",style="dashed",penwidth="4"];
+  kor -> cmn [color="#ff0000ff",penwidth="4"];
+  jpn -> cmn [color="#ff0000ff",penwidth="4"];
+  ale -> ess [color="#339933ff",penwidth="4"];
+}
+subgraph directed
+{
+  edge [arrowsize=4];
+  mns -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mns -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mns -> rus [color="#ff0000ff",arrowhead="odiamond",penwidth="4"];
+  kca -> sel [color="#339933ff",penwidth="4"];
+  kca -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kca -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> kca [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  yrk -> sel [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  sel -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sel -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kaz -> sel [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> sel [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> sel [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  gld -> sel [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> sel [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sel -> niv [color="#808080ff",style="dashed",arrowhead="onormal",penwidth="4"];
+  sel -> cmn [color="#808080ff",style="dashed",arrowhead="onormal",penwidth="4"];
+  yrk -> enf [color="#339933ff",penwidth="4"];
+  yrk -> nio [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  yrk -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  yrk -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kaz -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  gld -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> yrk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  enf -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  enf -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kaz -> enf [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> enf [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> enf [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  gld -> enf [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> enf [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nio -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nio -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> nio [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kaz -> nio [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> nio [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> nio [color="#007e56ff",penwidth="4"];
+  gld -> nio [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> nio [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> ykg [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> yux [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> kaz [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> khk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> bua [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> xal [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> gld [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> niv [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> ess [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  kaz -> khk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  bua -> kaz [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  xal -> kaz [color="#ff0000ff",arrowhead="odiamond",penwidth="4"];
+  sah -> khk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  xal -> sah [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sah -> evn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  khk -> mnc [color="#007e56ff",penwidth="4"];
+  khk -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  bua -> evn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  bua -> gld [color="#007e56ff",penwidth="4"];
+  bua -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  xal -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  evn -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  gld -> mnc [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  gld -> niv [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  gld -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  cmn -> gld [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> kor [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  mnc -> jpn [color="#808080ff",style="dashed",arrowhead="onormal",penwidth="4"];
+  cmn -> mnc [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  niv -> ain [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  itl -> ckt [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  ale -> itl [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  ess -> itl [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  ale -> ckt [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  ess -> ckt [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

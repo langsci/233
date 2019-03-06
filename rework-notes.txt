@@ -1,0 +1,435 @@
+Editor's Requirements
+=====================
+
+> 1) more explicit link to variation as most dialectologists and sociolinguists deal with it (variation along a temporal axis, 2-3 pages in an introductory chapter)
+
+I expanded the introductory chapter accordingly, connecting causal inference to possible other applications on diatopic, diastratic, diaphasic, and diamesic varieties in order to show how general the approach is, and emphasizing much more that historical linguistics is merely the test case which I chose to explore. This required me to introduce the intuitions behind information theory as well as the basic ideas of causal inference already in this chapter, but from a very bird's-eye perspective that I hope to still be readable for readers without much background in computer science.
+
+> 2) a bit more "piloting" prose for the technically less versed readers (Let's step back from the formulas at this point and recall our strategy and the  purpose [of the asymmetric prior / of our examining a range of estimation procedures / of the segment difference measures])
+
+I did this mainly in various places suggested by the reviewers (see below), but also made a final pass through the entire book, adding explanations in less formal language in dozens of places where I considered such additions promising with the likely perspective of the more linguistically oriented ready in mind.
+
+Reviewer 1
+==========
+
+> Still looks and feels very much like a dissertation (including of course cover page; Chapter 1,
+> third paragraph, “in this thesis”, three times on second page of “Introduction”, end of first
+> paragraph of Chapter 2, last line of page 12 of Chapter 2, first line of section 2.5.5, second line
+> of 2.6, first line of page 32, first line of Chapter 6, etc.).
+
+The cover page is now defined by the template, all reference to the word "thesis" were replaced by "book", "present volume", or similar.
+
+> Unnumbered introductory page, third paragraph, “recent developments in computational
+> historical linguistics have shown that it is possible to infer cognate judgments of reasonable
+> quality by automated means”. I’m not at all so confident, nor do I believe that the average
+> linguist would be either.
+
+I have changed the phrasing in what has now become the preface to sound less optimistic, spelling out what I mean by "reasonable quality", namely an approximation that works well enough for computational approaches, though it does of course still misclassify many word pairs as cognate or non-cognate.
+
+> Chapter 2, page 9, first full paragraph, there is a claim that sound change happens within one
+> generation. I don’t think this is true; regardless, it is sufficiently startling a claim that it should
+> be backed up with a reference. For this book, it’s not really relevant, so the easiest thing would
+> be to just eliminate what is in the parenthesis. 
+
+This was not supposed to claim any such thing (hence the "e.g."), I only intended it to indicate the rough timescale at which sound changes happen (decades rather than millennia or months), but I agree that it might be confusing, and therefore decided to just remove this remark as suggested.
+
+> Page 10, while appreciate using a Finnish
+> example (i.e. non-IE), this one is a little complex. Given the aim of this chapter to get the basic
+> concepts across to someone who doesn’t know historical linguistics, maybe a cleaner/clearer
+> case of analogy would be better. Or add a clear one and also keep the more complex Uralic one,
+> just to give a flavor of what real life really looks like.
+
+I added two simpler examples from Campbell (1999) in addition, which are also useful because they provide 
+a broader impression of the variety of phenomena subsumed by the term "analogy".
+
+> Section 2.5, “Automated Methods”, I agree that Hewson is the earliest I know of here too. I think that in the second paragraph of this
+> section though it would be fair to mention that one reason for lack of work in the field for a
+> while was the absence of sufficient computing power (other fields saw the same). Ideas/plans
+> got ahead of computing power, but once computing power caught up, many things suddenly
+> became possible (again, as in other fields). So it wasn’t just any unwieldiness.
+
+This is of course correct, I added some discussion to this effect.
+
+> Starting around page 37 with 3.2.1.1 “Basic Definitions”, things rapidly get
+> overwhelming for someone with no background (because they will be fighting to learn both
+> concepts and notations, in rapid succession). It is not obvious how to avoid this problem
+> though.
+
+I agree that this is difficult to avoid, but I did my best by weeding out the definitions (see next item), and interspersing the rapid-fire sequence of definitions with additional linguistic motivation and examples, instead of combining historical linguistics with causal inference for the first time in Chapter 6, as I had structured it in the first version. This also allows the reader to discern how all the concepts will be used much earlier, which hopefully contributes to a more pleasant overall reading experience.
+
+> There’s another similar situation starting on page 42, with some of the basics of
+> information theory. Here I do wonder if all is necessary – for example, are the definitions of bit,
+> nat, and ban all necessary (just below formula 3.9)? There could be other examples within this
+> section.
+
+This was fixed during the process of weeding out the definitions, the definitions were indeed unnecessary, in addition to some further concepts. Overall, the following definitions were removed from this chapter because they add context, but do not re-occur at any later point in the text and are therefore not helpful to the linguist reader: neighbours, spouses, sequence (as opposed to path), observational equivalence, perfect map, bit, nat, ban, Shannon cone, and stability (of causal inference algorithms).
+
+> Page 54, second paragraph, first sentence, “These constraints excluded Indo-European as the
+> central focus due to feasibility” – it would be helpful to say precisely which constraint excluded
+> IE, as IE pretty much never ends up excluded. I am assuming it was due to size/number of
+> documented languages, although the next paragraphs explain how they added many more
+> languages to the data of 26 Uralic languages. So it’s ultimately not clear if number of languages
+> was the constraint or not. In the end, this is a small point, but it would be good to clear it up
+> (fewer things for a reader to trip over). 
+
+I am now explaining the reasons, and what I meant by feasibility (exactly what the reviewer assumed).
+
+> Page 57, there is a reference to the end of the
+> EVOLAEMP project in April 2018 (and possibly other things in the same paragraph) – does this
+> require an update to this manuscript? 
+
+Of course this was outdated information, I have now updated it to reflect the current status and plans.
+
+> An initial error rate of just under 10% seems enormously
+> high, at least to the types of project I am familiar with (notwithstanding a comment later in the
+> paragraph that the rate for some corpora will be lower... but just “lower” or “much lower”)?
+> This is a bit worrying. 
+
+During the past year, we have managed to evaluate this expression against feedback provided by native speakers of some languages. As is stated in the current version, error rates varied between 1.4% for Hungarian (14 out of 1016 concepts) and 3.9% for Italian (40 of 1016 concepts). We will leave it to the reader to decide whether this can be considered "lower" or "much lower". For most minority languages, the error rate should be between 4% and the 10% determined for Udmurt. We agree that the overall rates are disturbingly high, but the errors tend to always occur for the same problematic concepts, which means that a user who needs better data quality will be able to discard the data for some concepts according to a list we provide with the next version. We estimate that even for unchecked languages, error rates of under 2% for a reduced list of 900 concepts will be possible. Thanks to intensified efforts in February and March 2019, I will likely also have data for the Bulgarian, Lithuanian, Persian, and Japanese wordlists to add to this section by the time the book gets finalized.
+
+> Near the top of page 95, speaking of Romanian, there is mention of
+> “many loanwords from Latin” – of course true – but there hasn’t been adequate previous
+> discussion of the inclusion of languages of an earlier historical stage. Mostly this won’t happen,
+> but there are languages such as Sanskrit, Old Church Slavonic, and Latin which although from an
+> earlier time period, are well recorded and (for cultural/religious reasons) have an effect on later
+> languages, whether their own descendants or unrelated languages. Perhaps a section on this
+> should be added (somewhere – not here, but earlier in the manuscript – internal borrowing,
+> page 124, is not an unrelated issue – also mentioned in Embleton 1986). At the very least, a
+> note that this is a “different” type of situation would be good.
+
+I added paragraphs mentioning both internal borrowing and this type of situation to the section about types of borrowing in Chapter 2, moving the example from Chapter 5 there as well.
+
+> Near the bottom of page 95,
+> there is a reference to Hungarian and “light green lines” – unfortunately Figure 4.15 is on the
+> next page, and this comment comes right under Figure 4.1.4. Hopefully this could be more user-friendly in the final layout. 
+
+This specific problem was already solved when transferring the contents to the LSP template, but I will devote some extra time to avoiding this sort of problem in the final layout.
+
+> Page 101, in the discussion of Korean, there is reference to “some
+> related and sparsely attested languages” – this is evidently distinct from all the various debated
+> affinities. But what are these languages, by name and location?
+
+The languages of Silla and Paekche, both of which are attested in some Chinese sources, and are related, but not ancestral to modern Korean at least in the view of some scholars, such as Christopher I. Beckwith, who I am now quoting.
+
+> At the bottom of page 101, is there any influence from English (or French, as colonial languages) into Inuktitut?
+
+Yes, there are English loanwords in many Eskimo languages, and I can add a reference for that if desired, see e.g. Berge & Kaplan (2005): "Contact-induced lexical development in Yupik and Inuit languages". However, I would want to avoid doing so, because we only have Siberian Yupik and Greenlandic in our database, both of which do not show any influence of English or French in our data, but substantial influence from the respective colonial languages (Russian and Danish) instead. In the current version, I discuss the loanwords in exactly those languages that we have data on, but if I consistently added additional languages from these families, I would have to discuss three times as many languages, without any benefit for my (current) gold standard.
+
+> Section 5.1.1 should probably make a historical reference to Embleton 1986, based on a
+> University of Toronto dissertation in 1981, only because the type of simulation (for the same
+> type of purpose, and facing the same type of issues as discussed on pages 110-112, e.g. around
+> retention rate, how to model borrowing in historical periods, cf. page 162) is in a very similar
+> field, looking at evolution/reconstruction of trees in an environment with borrowing. (Much
+> closer than the language competition example given.) Methods, computing power, general
+> interest, and multidisciplinarity have evolved hugely since then, so the reference would only be
+> historical (and because some reading this would know that work). 
+> Reference:
+> Sheila Embleton, 1986. Statistics in Historical Linguistics, Bochum, Brockmeyer Verlag. Out of
+> print but available on the web.
+
+After reading the first half of this very interesting dissertation, I added the recommended reference with some assessment to the general historical sketch in Chapter 2, and a discussion of her simulation model (which is indeed the most similar to mine I have seen so far) to Chapter 5.
+
+> Page 128, that formula at the top of the page is guaranteed to scare all but the hardiest. Is it necessary? 
+
+Although I see how the notational difficulty might make it look a bit involved and scary, it is actually just an elementary proof. If the proof might deter less mathematically inclined readers, it is of course always possible to move such details into an additional appendix, which I chose to do for now. Alternatively (and I would leave that decision to the editors), one could also just leave it out, as I would estimate any reader with sufficient training in mathematics to not be deterred by the notation will be able to reproduce this proof in less than an hour, or even see instantly why it is true.
+
+> Formula about 2/3 down page 129 is tiny print and virtually illegible in that format.
+
+I moved the entire example into a separate equation environment, which should resolve this issue.
+
+> Page 137 – “... the tree was re-rooted with Mandarin Chinese (cmn) as an outlier” – I don’t think
+> the need for a root has been adequately explained earlier, and therefore may come as an
+> unexpected and bewildering surprise for the reader. 
+
+I added one paragraph of explanation to the introductory section on phylogenetic inference, 
+and put the concept of rooting into the subject index in order to allow lookup in case the reader encounters
+the concept here for the first time.
+
+> Page 138, 6.7.1.2 “Parsimony-based
+> Approaches”, you refer to the “Sankoff algorithm”, but don’t give any reference. (One page
+> later, top of page 139, reference to “Sankoff table” is not explained.) `The reference absolutely
+> should be given.
+
+It should of course, and it is now. The term "Sankoff table" was removed, too, it is just the dynamic programming table mentioned in the rough explanation of the algorithm.
+
+> Chapter 7’s two paragraphs of introduction should tell more about what is to come in the chapter, rather than covering content. 
+
+Added a lot more motivation, reflecting where I stand after introducing PLFI in Chapter 6, and being a lot more explicit about the differences between phylogenetic flow and contact flow inference.
+
+> Section 7.3 will be out of reach of most audiences – omit
+> it, or find a way to present the results not just in this technical form but additionally in a waythat a wider audience can appreciate the result even if not the full details. 
+> Similarly for sections 7.4, the algorithm on page 165, parts of section 7.5.1, and really most of chapter 7. Perhaps it’s
+> a question of overload by this point in the book, but it’s harder to see the overall picture now,
+> rather than artful manipulation of data.
+
+Since omitting these sections would have removed the core of Chapter 7, which I consider the second major part of my dissertation, I chose to go the less straightforward way by fleshing out the discussion much more with a wider audience in mind, expanding the chapter by four additional pages of explanatory text. The danger of overload still exists, of course, but I do hope the new extended version will be much easier to follow.
+
+> Section 8.1 succinctly reviews the purpose and results of the previous chapters. Chapter 7 is the
+> least successfully reported on, which perhaps ties in to the impermeability of Chapter 7.
+
+The summary of Chapter 7 was reworked accordingly, which was facilitated by the additional work I put into that chapter.
+
+> The “Future Work” section (8.2) is much shorter than expected. 
+
+This section is now substantially extended based on my own work in progress as well as some additional ideas inspired by various suggestions from reviewers (see below) and colleagues.
+
+> It’s also a bit alarming that the software is currently lacking in documentation. 
+
+This situation has been improving since I submitted this version last summer, the software is now at least maintained in a public repository which includes a Wiki with some basic usage information. Based on feedback of colleagues and students who have started to work with my software, the documentation will continually be updated and improved in the future.
+
+> The most interesting section is the third
+> paragraph on page 180, which speaks to how a field could become unhealthily mathematicized.
+> Larger discussion of this would definitely add value. 
+
+I was very happy to comply with this request, and expanded the scope of this discussion.
+
+> The final paragraph of the book, a brief
+> discussion of “machine-assisted historical linguistics”, is also something that could well be
+> expanded and elaborated. 
+
+I gladly added some discussion of my current work on an experimental prototype, which I hope might become a major step into this direction.
+
+Reviewer 2
+==========
+
+> Leaving aside the fact that a lot of
+> the technical material will be beyond the ken of linguists, it’s hard to see what sort of
+> payoff for linguistics this book offers. 
+
+As an answer to this understandable concern, I added broader motivation to the introductory chapter, explaining how lexical flow inference is only one instance of a much more general framework that will lead to a range of new tools for exploratory data analysis, with the possibility of extension to actual hypothesis testing in the future.
+
+> As someone who has active research interest in
+> linguistic phylogenetics (computational and traditional), I found it difficult to see how
+> this work would impact the field. 
+> The many complexities of the method are described
+> in masterful detail, but it’s not clear that this method will lead to new breakthroughs in
+> the study of linguistic phylogenetics or change how linguists infer linguistic histories.
+> If this is supposed to be a book
+> for historical linguists generally (i.e., not just computational historical linguists), then my
+> recommendation is that the linguistic results of the work should be highlighted at the
+> outset.
+
+In its current state, I agree that my work does not represent a breakthrough, although I would be optimistic about the future prospects. For the purposes of the current publication, I added emphasis on the exploratory aspect, providing machinery to quickly analyse cross-variety datasets to come up with a first hypothesis about mutual influences.
+
+> While I find the idea behind the work fascinating, the
+> results for the simple scenarios (e.g., the Baltic Sea area on pp. 149–151) are, one has to
+> admit, rather disappointing. When the method cannot get the simple cases right, that
+> naturally calls into questions its reliability with more complex scenarios. Near the end of
+> the work the author concedes that the new tools that the manuscript offers might be better
+> suited to exploratory analysis. 
+
+In line with the previous comment, I am conceding that much earlier now, and explain how future versions of the framework could still be used in the future to support actual inference of historical knowledge.
+
+> If this book is going to be intended for historical linguists,
+> more should be said along the way about the relationship between various computational
+> methods or procedures and the linguistic reality that they are intended to model. For
+> instance, one possibility might be to engage more with the linguistic debate of trees vs.
+> waves as representations of lingusitic history and then to frame lexical flow inference as a
+> method that provides new insights into these issues.
+
+I must admit had not thought very systematically into that direction before, but I tried my best and came up with some potentially interesting thoughts. The result is in a new section at the end of Chapter 2.
+
+> In the Abstract (and Introduction), the paragraph that describes the contribution of chapter
+> 6 desperately needs some concrete illustration. After having read the manuscript, I now
+> know what the author is talking about, but initially that paragraph made little sense to me.
+
+To remedy this, I rephrased the paragraph in the abstract to be more concrete, and included much more information to the section on Chapters 6 and 7 in the introductory chapter, turning it from a terse technical summary into an exposition of the main underlying ideas.
+
+> “Automated inference of phylogenetic trees, the main tool to determine which languages
+> are more closely related than others.” (p. 2) This statement is at worst false and at best
+> misleading. I don’t know what the author has in mind with the phrase “automated inference
+> of phylogenetic trees,” but on a lay understanding of that phrase, it’s inaccurate. Inference
+> via Bayesian-MCMC methods, for instance, is anything but automatic.
+
+I rephrased this substantially in order to avoid the ambiguity of the term "automatic".
+
+> “Within the Indo-European language family, the Germanic languages form what is called a
+> genus.” (p. 6) No, it would either be a clade or a subgroup or a taxon. Later on (e.g., p.
+> 129), the author refers to phyla, but without offering a defintion of how he understands
+> this terms. Using taxonomic ranks strikes me as unhelpful. If the author insists on this,
+> motivation for this decision should be clearly presented.
+
+I am now avoiding the term "genus", and call what I previously called genera subgroups or taxa instead.
+
+> “In contrast, proving that...requires a lot more effort and expert knowledge, so that Indo-
+> European is certainly not a genus.” (p. 6) It sounds like the author is arguing against the
+> idea that the IE languages belong to a monophyletic clade. If so, such an argument needs to
+> be presented more thoroughly (it also strikes me as extraordinarily unlikely that the author
+> would be successful in pursuing this claim). If that’s not the author’s intent, the final part
+> of this sentence needs to be clarified.
+
+I am not trying to argue anything like that, all I was trying to say is that unlike for younger subgroups, the deep affinity between branches of Indo-European is not immediately obvious. I am now saying this more directly, avoiding anything that might sound to some readers as if I claimed that IE were not a taxon.
+
+> “This mixed character leads to the question whether English should be called a Germanic
+> or a Romance language.” (p. 6) Delete this sentence.
+
+I had structured the argument in this way to emphasize that historical linguistics has had a decision to make here, but it could indeed be read to imply that this is actually a debated question, which of course it isn't. The affiliation of English is now mentioned after the exposition of the decision criterion in historical linguistics.
+
+> The Online Etymological Dictionary (p. 7) should not be cited in an academic work. For
+> etymologies of Germanic, one should cite, e.g., Kluge or Kroonen.
+
+Switched to Kroonen (2013) for the etymology, also allowing me to add some discussion of possible IE connections.
+
+> “This is an instance of an incomplete etymology...” (p. 7) The concept of an incomplete
+> etymology is not a helpful one and the author’s definition is too superficial to know what is
+> intended.
+
+Changed to still convey the intended information that etymologies can be of different time depth, but now more explicitly, and avoiding the term "incomplete etymology" as if that were a technical term.
+
+> “regular phoneme substitutions” (p. 8) Sound change cannot be equated outright with
+> phonemic substitutions (because phonetic change usually proceeds phonemic substitu-
+> tion), esp. when discussing the Neogrammarian view (the phoneme of course was not a
+> current term at that time).
+
+I re-phrased this in a more careful way, while avoiding full discussion of the complex interplay of phonetic and phonemic change, which would be very difficult to follow for the non-linguist reader if I don't include an extensive primer on basic concepts of phonology.
+
+> 2(11) “Explanations by analogy” (p. 10) Analogy is not an explanation. It’s a label for a type of
+> linguistic change (i.e., an event).
+
+Changed to "explanations involving analogy" in order to disambiguate.
+
+> (12) In chapter 3 on p. 32, it would have helped immensely to have a simple illustrative example
+> to see what exactly the directed arcs do for us linguistically.
+
+I have added such an example, already foreshadowing the ideas of Chapters 6 and 7, in order to make the discussion easier to follow.
+
+> (13) “In this framework, a language is quite literally caused by its ancestor language...” (p. 125)
+> It should be clarified that this property of the framework is at odds with actual linguistic
+> transmission. In the course of linguistic transmission, the data from the transmitting
+> generation is not by itself the cause of the data in the receiving generation.
+
+I am now attempting to clarify this already in an additional paragraph at the start of Chapter 3, and hope my elaboration correctly reflects what the reviewer intended here.
+
+> (14) This worried me a lot: “there is currently no way to quantify the uncertainty inherent in
+> the results of lexical flow inference.” (p. 179) Measures of confidence with phylogenetic
+> trees are now standard. The absence of the ability to quantify uncertainty strikes me as a
+> significant drawback, since it is rarely possible to prove results when talk about linguistic
+> history.
+
+I am now mentioning and discussing possible ways of remedying this in the section on future work.
+
+Reviewer 3
+==========
+
+> However, the algorithmic contributions are somewhat limited: after setting out on an initial
+> discussion of Bayesian networks and their appropriateness, also with respect to evaluation
+> methods, the eventually used methods are (self-admittedly) more of a heuristic nature. This
+> creates a rift between the initially set expectations and the finally presented outcome.
+> This mismatch is especially stark since the use of graphical Bayesian models is completely
+> appropriate to the problem, as it allows us to model causal relations, incorporate prior knowledge,
+> and reason under uncertainty. There are a number of related approaches and contributions to the
+> automatic modeling of phylogeny by Murawaki, none of which have been mentioned here, and
+> which could be included in a final version.
+
+I was not previously aware of Murawaki's research, and I found it very interesting to read up on his work. His focus, at least in the more recent papers, is on phylogenetic inference based on typological features, where the research questions (and the challenges) are quite different from what I am doing. I especially like the way that the interdependencies of typological features, which is obviously the main challenge for such approaches, are learned in such a way that we get a model of typological plausability for both missing value imputation and reconstruction. His work also contains some valuable ideas, such as autologistic models for missing value imputation, which could be used to bring forward my own work from a statistical perspective, and which I am therefore now discussing briefly in the extended section on future work. Also, I found the simulation model he developed in the 2015 paper relevant enough to cite it in Chapter 5 as another possible model which explicitly models the existence of language contacts.
+
+> Here, as in other parts, the book is torn between faithfulness to linguistic theory, and adherence
+> to a quantitative and quantifiable approach. This rationalism vs. empiricism is a common dilemma
+> for computational linguistics, and it would merit its own discussion here. Relaxing some
+> theoretical requirements for the sake of greater modeling freedom could have opened the door to
+> more flexible approaches.
+
+I agree that this is a problem, and am trying to at least hint at this contrast in a few places now, while avoiding to clutter an already hard-to-digest text by additional philosophical complications. Instead, I am mentioning in a few more places than before what motivates my decisions, and describe what the repercussions of deciding differently would likely have been.
+
+> To take this further, it would have been interesting to see a discussion of neural methods
+> (mentioned only once), both for generation and evaluation (see the excellent primer by Goldberg,
+> 2015). Both graphical models as well as heuristic approaches treat each variable as a discrete
+> object, which can make it hard to measure gradual relations. Featurizing over a vector of
+> independent variables can address this problem, to some extent, though it essentially only reifies
+> it. It would have been nice to see a mention or comparison to distributed representations and
+> methods, as popularized recently by word or document embeddings. While more challenging in
+> terms of data size requirements, these allow for the more flexible assessment of relations and
+> could represent a fruitful future direction. With the data generation methods introduced here, this
+> might be a challenge that can be overcome.
+
+I am now discussing this as a possible avenue of future research in the final chapter, and also explain in Chapter 6 how inference based on cognate class membership vectors might in principle benefit from embedding them into a lower-dimensional space. This is the most obvious place in which a distributed representation is likely to lead to improvements in performance over the current infrastructure, though at the price of interpretability in terms of discrete borrowing events that historical linguists will likely prefer to see.
+
+> On page 83, only recall is compared between systems to measure cognates recognized: however,
+> it is unclear how better recall by itself is meaningful. A system that assigned all possible pairs as
+> cognates would have a perfect recall, but would obviously not be useful for any analysis. Typically,
+> this flaw in the metric is countered by precision, and their combination in F1. In the absence of this
+> number (the paper argues that "precision was already established by the previous experiment",
+> which measured different things), it is difficult to assess the system fairly.
+
+Of course an evaluation that includes precision would be better, but this would require me to be able to count false positives, which would presuppose a complete annotation of all loanwords in the database, a goal which seems completely infeasible given the scope of the WOLD project which essentially achieves the same for 41 languages, and required an expert for every single language. I am now arguing much more explicitly why I find the results of just comparing the recall informative enough. Essentially, the trade-off between precision and recall was already balanced out in the previous experiment, and I am re-using the parameters optimized for that case, not optimizing them again for optimum recall, which would of course result in a system which assigned cognacy status to all pairs. In principle, the (unmeasurable) precision could drop massively for the cross-family "cognacy" judgments, but I would argue this to be very unlikely given the extremely similar behavior in the intra-family evaluation.
+
+> A constant issue with any of the analysis is that the ground truth in language typologies is as much
+> shaped by political factors as by linguistic ones. So it is debatable how serious it is if a model fails
+> to match a political motivated decision, compared to if it misses a clear linguistic connection.
+> Given this label uncertainty, the whole concept of evaluation is a bit more fraught with risk. A
+> short discussion would have been nice.
+
+I am not sure which specific instance the reviewer is alluding to here, my gold standard attempts to include only contact links which can be demonstrated based on linguistic analysis of loanwords, and I do not see which of the items in it could be called merely politically motivated. Also, it eludes me why language typologies would be a relevant category here, because my model is not supposed to (and does not) measure typological relatedness at all. Still, in order to abide by the spirit of the reviewer's request, I added a short paragraph to Chapter 4, mentioning how uneven exploration of different loanword layers due to e.g. political motivation of etymological research, could in principle be a problem for a gold standard that is aggregated from existing literature such as mine.
+
+> And while grounding the gold standard in previous research is thorough and well-documented, it
+> seems to make very strong assumptions about directionality based on a varying amounts of
+> borrowings. In a directed network, as used here, it would have made sense to explore the option
+> to also use weighted edges (stronger if more words were borrowed). This undoubtedly would
+> complicate scoring further, but the question is again whether we want an accurate image or a high
+> score (and whether the question if scoring is applicable here at all).
+
+The networks resulting from my algorithms are actually weighted (which I am representing by arrows of varying strength), and I am mentioning this weighting as part of possible future scoring schemes, but even getting the gold standard answers to the binary question "was there influence or not?" has been rather difficult at times, and quantifying the amount of influence in the relevant subset of the lexicon would effectively presuppose a full analysis of the relevant part of the lexicon in each language. In the future work section, I added the information that such an analysis is actually under way now that we are adding an etymological annotation layer to major parts of NorthEuraLex, which will lead to much better gold-standard networks at least for parts of the database, although of course I do not have the capacity or ability to do original research in any of the language families, limiting me to what was already found and discussed in previous research.
+
+> Interestingly, the work seems to go back and forth a bit about the value of evaluations and their
+> limitations, as well as the value of model complexity, at times stressing that realistic models need
+> to account for the complexities (referred to as “randomness”) of real life, while at other defending
+> the choice of a simplified model measuring simple quantities. It would have been good to ground
+> this discussion in the framework of machine learning theory on model complexity (including the
+> accompanying measures) and the principle of Occam’s razor. As it is, the author’s position is often
+> a bit hard to discern.
+
+I am now discussing the connection to Occam's razor much more explicitly in Chapter 3, but I am still avoiding machine learning theory beyond the notion of overfitting in order to not further jeopardize readability to the linguist reader. I agree, however, that model complexity is an issue worth investigating in more formal terms for my area of interest.
+
+> As an aside: There are frequent allusions to economic models. While econometrics has a lot to
+> answer for in terms of oversimplifications and wrong predictions, it seems a bit odd to equate
+> markets, companies, and economic behavior with linguistic entities. There might be an argument
+> to be made here about viewing language borrowing in an economic framework (with languages
+> acting as rational agents in a market, and words acting as goods), but it would be a bit tenuous,
+> and not necessarily serve the paper. I would recommend removing the references.
+
+In certainly share the reviewer's doubts about seeing languages as agents or words as commodities on a market, a connection which I certainly wouldn't want to imply. I therefore tried to inventorize and amend all places in which I appear to equate linguistic entities with economic ones, and only found very few instances except in the introductory motivating example in Chapter 3. Even there, I am not explicitly equating economic and linguistic entities, but only using an economic example to motivate the ideas and principles of graphical models and causal inference. Due to the requirement to add more linguistic motivation, these examples are now accompanied by examples where (as in the later text) language varieties act as variables, which might seem to further increase the risk of implying such parallels. Previous readers of my dissertation liked the motivating example a lot, however, which causes me to absolutely want this example to stay in. Still, I have spent quite a bit of effort on encapsulating the economic example more, in order to avoid the impression that I would see languages in such economic terms.
+
+> Only the choice of a fixed replacement rate rho, based on theoretical considerations and prior
+> work from the 1950s seems a bit odd. This is clearly a tuneable parameter that could either be
+> evaluated on a development set, parameterized itself by a hyperparameter in a fully Bayesian
+> setting, or marginalized over in a bootstrapping approach (by generating various versions of the
+> data with differing values for rho, within a sensible range).
+
+As I am demonstrating, the fixed replacement rate assumption together with the borrowings modeled via contact channels, results in a realistic distribution of effective replacement rates. I would therefore apply Occam's razor and argue that given an explicit contact model, there is no need to assume non-constant rho. Still, I added the type of investigation suggested here as a possible direction for future work.
+
+> The comparison of cognate class size distributions (5.3) is sensible, but it would have been nice to
+> see a more rigorous comparison than a visual juxtaposition. Since the two distributions are both
+> Pareto distributions, which are parameterized by a single parameter alpha, it would have been a
+> much stronger argument to show the difference in alpha for the two distributions (in addition to
+> the visual, which could be made even stronger by overlaying the two distributions in a single grid).
+
+I did the suggested overlay and fitted the alpha values for the two Pareto distributions, as suggested. Due to the many spurious two-member cognate sets inferred over NorthEuraLex, the MLE estimates of the alpha parameter differ quite a bit, which I am now mentioning in the text as well.
+
+> Chapter 6 derives a very intuitive entropy measure based on the number of shared cognates
+> between languages, and refines it based on both hypothetical and practical considerations. The
+> underlying ideas about conditional independence and the flow of information are reminiscent of
+> the concept of D-separation in Bayesian networks, which these approaches inherently resemble. It
+> might make sense to make this connection more explicit here.
+
+Since I already introduced D-separation in Chapter 3, but neglected to point out the obvious connection here, I am now doing this a lot more explicitly.
+
+> The evaluation of the various models is straightforward. However, it was a bit disappointing to see
+> that the most performant methods were essentially off-the-shelf solutions, which came with both
+> theoretical and computational constraints. After all the work presented in the previous chapters, I
+> expected the author to present a fully Bayesian or custom graphical model approach. 
+> While theresults are good, this omission limits the algorithmic novelty of the work, and it seems like a
+> missed opportunity to develop a more theoretically well-founded approach.
+
+I am not sure what the reviewer means by "off-the-shelf solutions", the most successful methods on the real linguistic data (i.e. at realistic noise levels) are exactly the ones (flow separation, TSS, VCI) which I developed for this application, whereas off-the-shelf implementations of the PC and FCI algorithms demonstrably fail due to the high noise levels in the data. Moving to a fully Bayesian approach is of course one of the prime directions for future work, which I am now detailing in the extended future work section.
+
+> The color coding in the case studies is fairly complex, and sometimes a bit hard to see in the larger
+> graphs. I suggest using different line styles (dotted, dashed) to augment the colors. Specifically,
+> missing edges might be better represented with a non-solid line.
+
+I adapted the line layout according to these suggestions, reducing the number of colors needed, and therefore allowing me to reduce the number of and to enhance the contrast between these colors in order to improve readability also in case of a black-and-white printout.
+
+> If anything, the paper needs to clarify its own position with respect to some of the issues here more clearly. 
+> There is a huge potential for future research, but it would have to be driven by a more up-to-date computational methodology.
+
+The combined effect of the changes laid out in my answers will hopefully have led me a large part of the way towards this goal. In addition, I attempted to clarify my position more both inside the chapters (especially Chapter 7) and in the concluding remarks. I fully agree on the need to explore more up-to-date computational methodology in order to realize the potential of the framework whose basics I have laid out and explored in this book, though I will always prefer methods whose results are interpretable in terms of individual etymologies, even if that means lower performance on highly abstracted aggregated output structures such as contact flow networks.
+

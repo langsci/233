@@ -1,0 +1,87 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=60];
+  ain [pos="7050.0,2150.0", width="0.1", height="0.05"];
+  ale [pos="8350.0,2700.0", width="0.1", height="0.05"];
+  bua [pos="5980.0,2680.0", width="0.1", height="0.05"];
+  ckt [pos="7850.0,3350.0", width="0.1", height="0.05"];
+  cmn [pos="6000.0,1700.0", width="0.1", height="0.05"];
+  enf [pos="5250.0,3450.0", width="0.1", height="0.05"];
+  ess [pos="8050.0,3160.0", width="0.1", height="0.05"];
+  evn [pos="6450.0,2800.0", width="0.1", height="0.05"];
+  gld [pos="6650.0,2475.0", width="0.1", height="0.05"];
+  itl [pos="7375.0,2900.0", width="0.1", height="0.05"];
+  jpn [pos="6900.0,1850.0", width="0.1", height="0.05"];
+  kaz [pos="4500.0,2500.0", width="0.1", height="0.05"];
+  kca [pos="4250.0,3250.0", width="0.1", height="0.05"];
+  ket [pos="5350.0,3100.0", width="0.1", height="0.05"];
+  khk [pos="5850.0,2350.0", width="0.1", height="0.05"];
+  kor [pos="6400.0,1875.0", width="0.1", height="0.05"];
+  mnc [pos="6375.0,2370.0", width="0.1", height="0.05"];
+  mns [pos="4100.0,3100.0", width="0.1", height="0.05"];
+  nio [pos="5650.0,3550.0", width="0.1", height="0.05"];
+  niv [pos="6900.0,2666.5", width="0.1", height="0.05"];
+  rus [pos="3800.0,2800.0", width="0.1", height="0.05"];
+  sah [pos="6400.0,3100.0", width="0.1", height="0.05"];
+  sel [pos="5100.0,3250.0", width="0.1", height="0.05"];
+  xal [pos="3900.0,2316.5", width="0.1", height="0.05"];
+  ykg [pos="7050.0,3450.0", width="0.1", height="0.05"];
+  yrk [pos="4800.0,3500.0", width="0.1", height="0.05"];
+  yux [pos="6700.0,3287.5", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  mns -> kca [color="#339933ff",penwidth="5"];
+  mns -> yrk [color="#33993386",penwidth="2"];
+  sel -> nio [color="#339933e2",penwidth="3"];
+  sel -> rus [color="#339933c8",penwidth="2"];
+  enf -> nio [color="#339933ff",penwidth="3"];
+  enf -> rus [color="#339933b1",penwidth="2"];
+  ykg -> yux [color="#339933ff",penwidth="5"];
+  ykg -> rus [color="#339933b1",penwidth="2"];
+  ket -> rus [color="#339933f6",penwidth="3"];
+  rus -> sah [color="#339933ff",penwidth="3"];
+  rus -> evn [color="#339933ff",penwidth="3"];
+  rus -> itl [color="#339933ff",penwidth="4"];
+  rus -> ale [color="#339933ff",penwidth="3"];
+  kaz -> sah [color="#339933ff",penwidth="4"];
+  sah -> bua [color="#339933ff",penwidth="3"];
+  khk -> bua [color="#339933ff",penwidth="4"];
+  khk -> xal [color="#339933ff",penwidth="4"];
+  bua -> xal [color="#339933ff",penwidth="3"];
+  evn -> gld [color="#339933ff",penwidth="4"];
+  evn -> mnc [color="#339933bc",penwidth="2"];
+  ain -> jpn [color="#339933c5",penwidth="2"];
+  kor -> jpn [color="#339933ff",penwidth="3"];
+  kor -> cmn [color="#339933f7",penwidth="3"];
+  jpn -> cmn [color="#339933b7",penwidth="2"];
+  ale -> ess [color="#339933ff",penwidth="3"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  mns -> rus [color="#007e5699",penwidth="2"];
+  kca -> sel [color="#007e56ef",penwidth="3"];
+  yrk -> sel [color="#007e56ff",penwidth="3"];
+  sel -> niv [color="#007e56a1",penwidth="2"];
+  sel -> cmn [color="#007e5688",penwidth="2"];
+  yrk -> enf [color="#007e56ff",penwidth="5"];
+  yrk -> nio [color="#007e56ff",penwidth="4"];
+  evn -> nio [color="#007e569d",penwidth="2"];
+  xal -> kaz [color="#007e56b6",penwidth="2"];
+  khk -> mnc [color="#007e56dc",penwidth="3"];
+  bua -> gld [color="#007e56b6",penwidth="2"];
+  gld -> mnc [color="#007e56ff",penwidth="3"];
+  mnc -> jpn [color="#007e5687",penwidth="2"];
+  itl -> ckt [color="#007e56ff",penwidth="3"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

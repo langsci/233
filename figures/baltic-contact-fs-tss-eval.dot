@@ -1,0 +1,150 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=30];
+  bel [pos="2300.0,2650.0", width="0.1", height="0.05"];
+  dan [pos="1500.0,2800.0", width="0.1", height="0.05"];
+  deu [pos="1550.0,2450.0", width="0.1", height="0.05"];
+  ekk [pos="2300.0,2950.0", width="0.1", height="0.05"];
+  eng [pos="1000.0,2650.0", width="0.1", height="0.05"];
+  fin [pos="2250.0,3100.0", width="0.1", height="0.05"];
+  isl [pos="950.0,3250.0", width="0.1", height="0.05"];
+  krl [pos="2600.0,3200.0", width="0.1", height="0.05"];
+  lav [pos="2200.0,2840.0", width="0.1", height="0.05"];
+  lit [pos="2200.0,2750.0", width="0.1", height="0.05"];
+  liv [pos="2075.0,2870.0", width="0.1", height="0.05"];
+  nld [pos="1300.0,2625.0", width="0.1", height="0.05"];
+  nor [pos="1400.0,3050.0", width="0.1", height="0.05"];
+  olo [pos="2650.0,3050.0", width="0.1", height="0.05"];
+  pol [pos="2000.0,2600.0", width="0.1", height="0.05"];
+  rus [pos="2900.0,2800.0", width="0.1", height="0.05"];
+  sjd [pos="2750.0,3350.0", width="0.1", height="0.05"];
+  sma [pos="1700.0,3233.5", width="0.1", height="0.05"];
+  sme [pos="2200.0,3450.0", width="0.1", height="0.05"];
+  smj [pos="1825.0,3400.0", width="0.1", height="0.05"];
+  smn [pos="2350.0,3350.0", width="0.1", height="0.05"];
+  sms [pos="2433.5,3400.0", width="0.1", height="0.05"];
+  swe [pos="1750.0,3000.0", width="0.1", height="0.05"];
+  vep [pos="2750.0,3000.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+  fin -> krl [color="#339933ff",penwidth="4"];
+  fin -> olo [color="#339933ff",penwidth="4"];
+  fin -> ekk [color="#339933ff",penwidth="4"];
+  fin -> sme [color="#339933ff",penwidth="4"];
+  fin -> smn [color="#339933ff",penwidth="4"];
+  krl -> olo [color="#339933ff",penwidth="4"];
+  krl -> vep [color="#339933ff",penwidth="4"];
+  krl -> sms [color="#339933ff",penwidth="4"];
+  olo -> vep [color="#339933ff",penwidth="4"];
+  vep -> ekk [color="#339933ff",penwidth="4"];
+  vep -> liv [color="#339933ff",penwidth="4"];
+  vep -> sjd [color="#339933ff",penwidth="4"];
+  ekk -> isl [color="#808080ff",style="dashed",penwidth="4"];
+  liv -> sms [color="#339933ff",penwidth="4"];
+  liv -> lav [color="#ff0000ff",penwidth="4"];
+  sma -> smj [color="#339933ff",penwidth="4"];
+  sme -> smn [color="#339933ff",penwidth="4"];
+  smn -> sms [color="#339933ff",penwidth="4"];
+  nor -> swe [color="#339933ff",penwidth="4"];
+  nor -> dan [color="#339933ff",penwidth="4"];
+  swe -> deu [color="#339933ff",penwidth="4"];
+  dan -> deu [color="#339933ff",penwidth="4"];
+  deu -> nld [color="#339933ff",penwidth="4"];
+  rus -> bel [color="#339933ff",penwidth="4"];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  swe -> fin [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lav -> fin [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lit -> fin [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lav -> krl [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lit -> krl [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> krl [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lav -> olo [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lit -> olo [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> olo [color="#007e56ff",penwidth="4"];
+  lav -> vep [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lit -> vep [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> vep [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  ekk -> liv [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  deu -> ekk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lav -> ekk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  lit -> ekk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> ekk [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> liv [color="#007e56ff",penwidth="4"];
+  lit -> liv [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sme -> sma [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  sms -> sma [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> sma [color="#007e56ff",penwidth="4"];
+  swe -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> sma [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sme -> smj [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  smn -> smj [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> smj [color="#007e56ff",penwidth="4"];
+  swe -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> smj [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sme -> sjd [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  swe -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> sme [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nor -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  swe -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> smn [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  sms -> sjd [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  swe -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> sms [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nor -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  swe -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  dan -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  isl -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  deu -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  nld -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  eng -> sjd [color="#c0c0c0ff",style="dotted",arrowhead="onormal",penwidth="4"];
+  rus -> sjd [color="#007e56ff",penwidth="4"];
+  nor -> isl [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> nld [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nor -> eng [color="#339933ff",penwidth="4"];
+  swe -> isl [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  deu -> rus [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nld -> eng [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  nld -> lav [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  lav -> lit [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  rus -> lav [color="#339933ff",penwidth="4"];
+  pol -> lit [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  rus -> pol [color="#339933ff",arrowhead="onormal",penwidth="4"];
+  bel -> pol [color="#ff0000ff",arrowhead="odiamond",penwidth="4"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+}
+}

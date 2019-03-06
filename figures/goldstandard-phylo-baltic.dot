@@ -1,0 +1,133 @@
+digraph LanguageGraph
+{
+  splines=true;
+  node [ fontname=Arial, fontcolor=black, fontsize=30];
+  Balto_Slavic [pos="2550.0,2500.0", shape=box, width="0.1", height="0.05"];
+  Central_Western_Saami [pos="2000.0,3320.0", shape=box, width="0.1", height="0.05"];
+  East_Slavic [pos="2700.0,2700.0", shape=box, width="0.1", height="0.05"];
+  Eastern_Baltic [pos="2400.0,2750.0", shape=box, width="0.1", height="0.05"];
+  Eastern_Saami [pos="2800.0,3450.0", shape=box, width="0.1", height="0.05"];
+  Finnic [pos="2600.0,2900.0", shape=box, width="0.1", height="0.05"];
+  Franconian [pos="1400.0,2550.0", shape=box, width="0.1", height="0.05"];
+  Germanic [pos="1650.0,2600.0", shape=box, width="0.1", height="0.05"];
+  Indo_European [pos="2800.0,2400.0", shape=box, width="0.1", height="0.05"];
+  Karelic_Finnic [pos="2550.0,3125.0", shape=box, width="0.1", height="0.05"];
+  Mainland_Eastern_Saami [pos="2450.0,3475.0", shape=box, width="0.1", height="0.05"];
+  North_Germanic [pos="1550.0,2980.0", shape=box, width="0.1", height="0.05"];
+  Saami [pos="2900.0,3250.0", shape=box, width="0.1", height="0.05"];
+  Slavic [pos="2900.0,2600.0", shape=box, width="0.1", height="0.05"];
+  Uralic [pos="3000.0,3000.0", shape=box, width="0.1", height="0.05"];
+  West_Germanic [pos="1300.0,2700.0", shape=box, width="0.1", height="0.05"];
+  West_Scandinavian [pos="1200.0,3000.0", shape=box, width="0.1", height="0.05"];
+  Western_Saami [pos="2000.0,3220.0", shape=box, width="0.1", height="0.05"];
+  bel [pos="2300.0,2650.0", width="0.1", height="0.05"];
+  dan [pos="1500.0,2800.0", width="0.1", height="0.05"];
+  deu [pos="1550.0,2450.0", width="0.1", height="0.05"];
+  ekk [pos="2300.0,2950.0", width="0.1", height="0.05"];
+  eng [pos="1000.0,2650.0", width="0.1", height="0.05"];
+  fin [pos="2250.0,3100.0", width="0.1", height="0.05"];
+  isl [pos="950.0,3250.0", width="0.1", height="0.05"];
+  krl [pos="2600.0,3200.0", width="0.1", height="0.05"];
+  lav [pos="2200.0,2840.0", width="0.1", height="0.05"];
+  lit [pos="2200.0,2750.0", width="0.1", height="0.05"];
+  liv [pos="2075.0,2870.0", width="0.1", height="0.05"];
+  nld [pos="1300.0,2625.0", width="0.1", height="0.05"];
+  nor [pos="1400.0,3050.0", width="0.1", height="0.05"];
+  olo [pos="2650.0,3050.0", width="0.1", height="0.05"];
+  pol [pos="2000.0,2600.0", width="0.1", height="0.05"];
+  rus [pos="2900.0,2800.0", width="0.1", height="0.05"];
+  sjd [pos="2750.0,3350.0", width="0.1", height="0.05"];
+  sma [pos="1700.0,3233.5", width="0.1", height="0.05"];
+  sme [pos="2200.0,3450.0", width="0.1", height="0.05"];
+  smj [pos="1825.0,3400.0", width="0.1", height="0.05"];
+  smn [pos="2350.0,3350.0", width="0.1", height="0.05"];
+  sms [pos="2433.5,3400.0", width="0.1", height="0.05"];
+  swe [pos="1750.0,3000.0", width="0.1", height="0.05"];
+  vep [pos="2750.0,3000.0", width="0.1", height="0.05"];
+subgraph undirected
+{
+  edge [dir=none];
+}
+subgraph bidirected
+{
+  edge [dir=none];
+}
+subgraph directed
+{
+  edge [arrowsize=2];
+  Eastern_Baltic -> Finnic [color="#007e56ff",penwidth="4"];
+  rus -> lav [color="#007e56ff",penwidth="4"];
+  deu -> lav [color="#007e56ff",penwidth="4"];
+  lav -> liv [color="#007e56ff",penwidth="4"];
+  rus -> bel [color="#007e56ff",penwidth="4"];
+  pol -> bel [color="#007e56ff",penwidth="4"];
+  rus -> krl [color="#007e56ff",penwidth="4"];
+  rus -> olo [color="#007e56ff",penwidth="4"];
+  rus -> ekk [color="#007e56ff",penwidth="4"];
+  rus -> vep [color="#007e56ff",penwidth="4"];
+  rus -> sms [color="#007e56ff",penwidth="4"];
+  rus -> sjd [color="#007e56ff",penwidth="4"];
+  Germanic -> Saami [color="#007e56ff",penwidth="4"];
+  North_Germanic -> eng [color="#007e56ff",penwidth="4"];
+  North_Germanic -> Western_Saami [color="#007e56ff",penwidth="4"];
+  dan -> nor [color="#007e56ff",penwidth="4"];
+  deu -> nor [color="#007e56ff",penwidth="4"];
+  nor -> sma [color="#007e56ff",penwidth="4"];
+  deu -> dan [color="#007e56ff",penwidth="4"];
+  deu -> swe [color="#007e56ff",penwidth="4"];
+  swe -> fin [color="#007e56ff",penwidth="4"];
+  swe -> smj [color="#007e56ff",penwidth="4"];
+  deu -> ekk [color="#007e56ff",penwidth="4"];
+  deu -> liv [color="#007e56ff",penwidth="4"];
+  Finnic -> Saami [color="#007e56ff",penwidth="4"];
+  krl -> sms [color="#007e56ff",penwidth="4"];
+  krl -> sjd [color="#007e56ff",penwidth="4"];
+  fin -> smn [color="#007e56ff",penwidth="4"];
+  fin -> sms [color="#007e56ff",penwidth="4"];
+  fin -> sme [color="#007e56ff",penwidth="4"];
+}
+subgraph directedPreset
+{
+  edge [arrowsize=2];
+  Indo_European -> Balto_Slavic [color="#000000ff",penwidth="4"];
+  Indo_European -> Germanic [color="#000000ff",penwidth="4"];
+  Balto_Slavic -> Eastern_Baltic [color="#000000ff",penwidth="4"];
+  Balto_Slavic -> Slavic [color="#000000ff",penwidth="4"];
+  Eastern_Baltic -> lav [color="#000000ff",penwidth="4"];
+  Eastern_Baltic -> lit [color="#000000ff",penwidth="4"];
+  Slavic -> East_Slavic [color="#000000ff",penwidth="4"];
+  Slavic -> pol [color="#000000ff",penwidth="4"];
+  East_Slavic -> bel [color="#000000ff",penwidth="4"];
+  East_Slavic -> rus [color="#000000ff",penwidth="4"];
+  Germanic -> North_Germanic [color="#000000ff",penwidth="4"];
+  Germanic -> West_Germanic [color="#000000ff",penwidth="4"];
+  North_Germanic -> West_Scandinavian [color="#000000ff",penwidth="4"];
+  North_Germanic -> dan [color="#000000ff",penwidth="4"];
+  North_Germanic -> swe [color="#000000ff",penwidth="4"];
+  West_Scandinavian -> isl [color="#000000ff",penwidth="4"];
+  West_Scandinavian -> nor [color="#000000ff",penwidth="4"];
+  West_Germanic -> Franconian [color="#000000ff",penwidth="4"];
+  West_Germanic -> eng [color="#000000ff",penwidth="4"];
+  Franconian -> deu [color="#000000ff",penwidth="4"];
+  Franconian -> nld [color="#000000ff",penwidth="4"];
+  Uralic -> Finnic [color="#000000ff",penwidth="4"];
+  Uralic -> Saami [color="#000000ff",penwidth="4"];
+  Finnic -> Karelic_Finnic [color="#000000ff",penwidth="4"];
+  Finnic -> ekk [color="#000000ff",penwidth="4"];
+  Finnic -> fin [color="#000000ff",penwidth="4"];
+  Finnic -> liv [color="#000000ff",penwidth="4"];
+  Finnic -> vep [color="#000000ff",penwidth="4"];
+  Karelic_Finnic -> krl [color="#000000ff",penwidth="4"];
+  Karelic_Finnic -> olo [color="#000000ff",penwidth="4"];
+  Saami -> Eastern_Saami [color="#000000ff",penwidth="4"];
+  Saami -> Western_Saami [color="#000000ff",penwidth="4"];
+  Eastern_Saami -> Mainland_Eastern_Saami [color="#000000ff",penwidth="4"];
+  Eastern_Saami -> sjd [color="#000000ff",penwidth="4"];
+  Mainland_Eastern_Saami -> smn [color="#000000ff",penwidth="4"];
+  Mainland_Eastern_Saami -> sms [color="#000000ff",penwidth="4"];
+  Western_Saami -> Central_Western_Saami [color="#000000ff",penwidth="4"];
+  Western_Saami -> sma [color="#000000ff",penwidth="4"];
+  Central_Western_Saami -> sme [color="#000000ff",penwidth="4"];
+  Central_Western_Saami -> smj [color="#000000ff",penwidth="4"];
+}
+}
