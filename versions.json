@@ -1,8 +1,7 @@
 {"versions": [{"versiontype": "proofreading",
-		"title": "A grammar of Komnzo",
-		"authors": [{"name": "Christian Döhler"}],
+		"title": "Information-theoretic causal inference of lexical flow",
+		"authors": [{"name": "Johannes Dellert"}],
 	"license": "CC-BY-4.0",
-	"DOI": "1234.34/34211",
-	"publishedAt": "2018-08-31T17:16:05.000Z"}
+	"publishedAt": "2019-03-06T11:51:45.000Z"}
 	]
 }
