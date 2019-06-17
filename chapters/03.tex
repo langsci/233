@@ -323,7 +323,7 @@ In the next phase (Stage II), we check for the presence of v-structures. For eac
 
 If our independence tests were completely reliable (and this is what the basic PC algorithm assumes), we can be sure that we have found exactly the correct v-structures at Stage II. This allows us to orient many of the remaining undirected edges (which were not part of any v-structure) in a third phase (Stage III), by repeatedly applying two simple criteria until no additional arrows can be inferred. If one direction of a link would lead to a new v-structure which was not detected at Stage II, we can add the arrow in the reverse direction (leading to a chain). Moreover, if we assume acyclicity (as implied by the Causal Markov condition), we can also orient any arrow where the reverse orientation would result in a cycle $A \rightarrow B_1 \rightarrow B_2 \rightarrow \dots \rightarrow A$. Enforcing the two principles can be achieved by applying four arrow propagation rules, which I will not cite here because they are subsumed by the ruleset of the more complex FCI algorithm in Section 3.2.4. Thanks to a proof by \cite{meek1995}, it has long been known that application of these four rules until the fixed point (until they do not apply any more) suffices to arrive at the CPDAG representing the Markov equivalence class of the true graph, i.e.\ containing all the arrows which are common to the causal graphs in the class. This even holds if we add background knowledge in the form of pre-directed arrows, as one would do if e.g.\ the temporal order makes the directionality of causation obvious.
 
-\begin{figure}[h]\small
+\begin{figure}\small
 \begin{minipage}{.23\textwidth}
   \begin{center}
    \begin{tikzpicture}

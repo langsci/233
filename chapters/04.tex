@@ -322,7 +322,7 @@ To illustrate how IWSA improves the quality of phonetic string distances over mo
 Turning first to \ili{English} and \ili{German} as a language pair that readers of English will have some valid intuitions about, Figure \ref{iwsa-example-eng-deu} shows the information-weighted alignment for the already mentioned cognate pair \textit{gefrieren/freeze}. Again, transparency is used to visualize information content. To visualize the phoneme distances $d(a_i,b_j)$ in the optimal alignment, a color continuum is used, from green (low phoneme distance) via yellow and brown towards red (high phoneme distance). The pink color of the pair \textipa{g}/- indicates that it would typically count as evidence against cognacy if we have to remove a \textipa{[g]} to turn the German word into its English counterpart, which makes sense given minimal non-cognate pairs such as \textit{Gold/old}. However, here we have \textipa{[g]} at the beginning of the word in front of the vowel \textipa{[@]}, a pattern which never occurs in stem syllables because they are always stressed in German, and \textipa{[@]} is only 
 possible in unstressed syllables. Therefore, the frequent occurrence of the verbal prefix \textit{ge-} leads to low information content (high transparency), which means that the deletion of the \textipa{[g]} counts very little towards the overall distance score, keeping the score in the region below 0.4 where cognate pairs will typically end up. Without information weighting, the additional problem with the \ipa{K}/\ipa{z} correspondence would have carried the score well beyond this threshold.
 
-\begin{figure}[h]
+\begin{figure}
  \centering
  \setlength\tabcolsep{0.1cm}
 \begin{tabular}{cccccccccll}
@@ -362,7 +362,7 @@ distant under information weighting. However, the distance score remains well ab
 
 A second language pair, \ili{Arabic} and \ili{Hebrew}, serves to demonstrate that information weighting is a more generalizable principle which models more complex phenomena than simple affix detection and removal. Again, we start by taking a look at an example pair of cognate words. Abstracting over some complications, Semitic\il{Semitic languages} etymologies are always based on three-consonant roots, and the intervening vowels are secondary material which expresses derivations from the same root. In this case, the Arabic form for `snow' can be reduced to the root pattern $\Theta$ - L - Ǧ, and the Hebrew form reduces to Š - L - G. The phoneme distances inferred from NorthEuraLex data for this language pair correctly encode close correspondences $\Theta$/Š, L/L, and Ǧ/G between the two languages, and as shown in Figure \ref{iwsa-example-arb-heb}, the information weighting correctly infers that the vowels do not contain much information, whereas consonants are very important. This results in a very low alignment score for the dissimilar cognate forms \textit{$\theta$alǧ} and \textit{šeleg}.
 
-\begin{figure}[h]
+\begin{figure}
  \centering
  \setlength\tabcolsep{0.1cm}
 \begin{tabular}{cccccll}
@@ -448,7 +448,7 @@ Without taking information content into account when counting occurrences, regul
 
 As in other permutation-based methods, the expected count $\hat{c}(a,b)$ to compare $c(a,b)$ against is derived from the exact same computations on permutations of the input data. More concretely, we collect the original data pairs $(w,v) \in lex(L_1,L_2)$ which were considered cognate candidates ($al(w,v).sc < 0.5$) into two parallel lists $wl$ and $vl$, which we then randomly permute to derive scrambled databases $lex'(L_1,L_2) := (wl,\pi(vl))$ for random permutations $\pi$. Given the large amounts of data in NorthEuraLex, 10 resamples were typically enough to derive very stable values for $\hat{c}(a,b)$.
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/phoneme-neighbor-graph.png}
     \caption{Visualization of phoneme similarity as inferred from the NorthEuraLex data}
     \label{fig:phonemDistGlobal}
@@ -475,7 +475,7 @@ We conclude the discussion of sound correspondence inference by taking a closer 
 For \ili{English} and \ili{German}, most sound correspondences are inferred correctly. For instance, English \ipa{[p]}, while corresponding to German \ipa{[\t{pf}]} in most contexts, often corresponds to \ipa{[f]} due to subsequent simplification, as can be seen in examples such as the cognate pairs \textit{ripe} and \textit{reif}, \textit{sharp} and \textit{scharf}, and \textit{sheep} and \textit{Schaf}. Also, an apparent chain shift \ipa{[D]} $\rightarrow$ \ipa{[d]} $\rightarrow$ \ipa{[t]} $\rightarrow$ \ipa{[\t{ts}]} becomes very clearly visible. The detected shifts correctly represent the High German consonant shift which occurred in the southern parts of the West Germanic dialect continuum, giving rise to \ili{Old High German}. Other prominent correspondences include \ipa{[s]} $\rightarrow$ \ipa{[z]} (as in \textit{sun} \ipa{[s2n]} vs. \textit{Sonne} \ipa{[zOn@]}), \ipa{[v]} $\rightarrow$ \ipa{[b]} (as in \textit{give} \ipa{[gIv]} vs. \textit{geben} \ipa{[ge:b@n]}), and \ipa{[w]} $\rightarrow$ \ipa{[v]} 
 (as in \textit{water} \ipa{[wO:t@]} vs. \textit{Wasser} \ipa{[vas5]}).
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/drift-graph-en-de.pdf}
     \caption{Drift graph of inferred correspondences from English to German}
     \label{fig:driftGraphEnDe}
@@ -483,7 +483,7 @@ For \ili{English} and \ili{German}, most sound correspondences are inferred corr
 
 Turning to another pair of closely related Indo-European languages, we take a look at the drift graph from \ili{Lithuanian} to \ili{Latvian} in Figure \ref{fig:driftGraphLtLv}. Here, we have some very prominent correspondences without which an automated system would fail to find many cognates even between this closely related pair of languages. The three most prominent correspondences are Lithuanian \ipa{[k]} and Latvian \ipa{[\t{ts}]}, (reflected in cognate pairs such as \textit{kepti/cept} `to bake' and \textit{lokys/l\={a}cis} `bear'), Lithuanian \ipa{[g]} vs. Latvian \ipa{[\t{dz}]} (as in \textit{giesm\.{e}/dziesma} `song' or \textit{gyventi/dz\=ivot} `to live'), and Lithuanian \ipa{[V]} vs. Latvian \ipa{[f]} (due to devoicing in Latvian in pairs such as \textit{t\.{e}vas/t\={e}vs} `father' or \textit{\v{z}uvis/zivs} `fish'). There is a problematic (though weak) correspondence between \ipa{[n]} and \ipa{[O]}. Inspection of the alignments shows that this happens in cognates where Lithuanian \textit{an} \ipa{[5n]} corresponds to Latvian \textit{o} \ipa{[uO]} (also reflecting ancestral \textit{*an}) in word pairs such as \textit{ranka/roka} `hand' and \textit{antras/otrais} `second', which cannot be modeled by single-segment correspondences.
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/drift-graph-lt-lv.pdf}
     \caption{Drift graph of inferred correspondences from Lithuanian to Latvian}
     \label{fig:driftGraphLtLv}
@@ -492,7 +492,7 @@ Turning to another pair of closely related Indo-European languages, we take a lo
 Moving to a second language family, we inspect the drift graph from \ili{Finnish} to \ili{Northern Saami} in Figure \ref{fig:driftGraphFiSe}. While some of the inferred shifts make a lot of sense, we quickly notice that some of the inferred correspondences are a lot less plausible than the examples we have seen so far. For instance, there are weak correspondences \ipa{[E]}/\ipa{[S]} and \ipa{[n]}/\ipa{[c]} which seem completely out of place. Inspection of the relevant alignment pairs shows that much like in the case of the erroneous correspondence between Lithuanian and Latvian, these patterns are due to non-root segments. Some Finnish nouns in \textit{-e} which historically ended in \textit{*-ek} are cognate with Northern Saami nouns in \textit{-a\v{s}}. Examples in the NorthEuraLex database include \textit{murhe/mora\v{s}} `sorrow', \textit{perhe/beara\v{s}} `family', and \textit{k\"a\"arme/gearpma\v{s}} `snake'. The reasons for the erroneous inference of \ipa{[n]}/\ipa{[c]} are more subtle. Relevant pairs 
 include \textit{sanoa/dadjat} `to say' and \textit{huono/headju} `bad'. In both of these cases, Saami \textit{dj} \ipa{[cc]} overlaps in alignments with Finnish \textit{n}, a situation which occurs too often to be attributable to chance, and is therefore resolved by matching the Finnish \ipa{[n]} with one of the \ipa{[c]} sounds of the Saami geminate.
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/drift-graph-fi-se.pdf}
     \caption{Drift graph of inferred correspondences from Finnish to Northern Saami}
     \label{fig:driftGraphFiSe}
@@ -501,7 +501,7 @@ include \textit{sanoa/dadjat} `to say' and \textit{huono/headju} `bad'. In both 
 Much more difficult to recognize, due to the low number of cognates, are the major sound shifts which separate \ili{Finnish} from \ili{Hungarian}. The relevant drift graph in Figure \ref{fig:driftGraphFiHu}, however, still clearly shows two of the major sound shifts which occurred in the history of Hungarian. The correspondence \ipa{[k]}/\ipa{[h]} is correctly inferred from cognate pairs such as \textit{kala/hal} `fish' and \textit{kuulla/hall} `to hear', and the correspondence \ipa{[p]}/\ipa{[f]} covers pairs such as \textit{puu/fa} `tree' and \textit{p\"a\"a/f\H{o}} `head'. The vowel correspondences are a lot more chaotic, and also less well-represented, leading to fewer local correspondences among vowels, except a tendency to map Finnish \textit{e} \ipa{[E]} to Hungarian \textit{\'e} \ipa{[e]}, due to cognate pairs such as \textit{pes\"a/f\'eszek} `nest', and a mapping of the vowel \ipa{[u]} (much more frequent in Finnish than Hungarian) to \ipa{[6]}, which is very frequent in Hungarian, but does not occur 
 in Finnish. The mapping of Finnish \textit{\"a} \ipa{[\ae]} to the gap symbol is mainly due to the fact that an overwhelming majority of dictionary forms of Finnish words ends in a vowel, whereas Hungarian has undergone a process of monosyllabification (as evidenced in some of the examples above). The purpose of the cheap vowel-to-gap mappings for modeling Finnish-Hungarian cognates is therefore to reduce the costs of deleting the trailing vowel from the Finnish lexemes, which contains little information that would be relevant for comparison with Hungarian.
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/drift-graph-fi-hu.pdf}
     \caption{Drift graph of inferred correspondences from Finnish to Hungarian}
     \label{fig:driftGraphFiHu}
@@ -509,7 +509,7 @@ in Finnish. The mapping of Finnish \textit{\"a} \ipa{[\ae]} to the gap symbol is
 
 Finally, to illustrate that no local sound correspondences are inferred for a typical pair of unrelated languages, the drift graph from \ili{Basque} to \ili{Nivkh} is given in Figure \ref{fig:driftGraphEuNiv}. As expected, we see almost no green arrows in this drift graph, and the two arrows which do exist are very thin, indicating only small changes to the phoneme distances. Here, the spurious correspondence \ipa{[i]}/\ipa{[c]} is due to the fact that a large class of Basque verbs ends in \textit{-i}, whereas the dictionary form of the Nivkh verb virtually always ends in \textit{-t'}, which is pronounced \ipa{[c]}. Without information weighting detecting and modeling that these elements are not very informative, the effect of this systematic pattern would have been much stronger. The \ipa{[s]}/\ipa{[h]} correspondence is due to the low frequency of word-initial \ipa{[h]} in Nivkh and the high frequency of \ipa{[s]} (written \textit{z}) in Basque, combined with a handful of spurious similarities such as \textit{azal} and \textit{hal} `skin'.
 
-\begin{figure}[h!]
+\begin{figure}
     \includegraphics[width=\textwidth]{figures/drift-graph-eu-niv.pdf}
     \caption{Drift graph of inferred correspondences from Basque to Nivkh}
     \label{fig:driftGraphEuNiv}
