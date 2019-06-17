@@ -61,11 +61,6 @@ For an example of a true v-structure, consider another triple of languages consi
 In what follows, I will write $vStructTest(A \rightarrow B \leftarrow C)$ for language variables to express a v-structure check. In the FCI directionality inference variant, this will denote the usual check in the first separating set that is found. The shorthand VCI will be used to denote the variant of the algorithm where we check whether $chyper(c(A,B,C),c(A,B),c(B)-c(A,B),c(B,C)) < 0.05$, i.e.\ the v-structure test developed here at a significance level of $0.05$. UFR will continue to be used for the unique correlate flow check as introduced in the previous chapter.
 
 \section{Contact Lexical Flow Inference (CLFI)}\label{sec:7.5}
-Algorithm \ref{clfi-algorithm} shows the adaptations needed to implement the \isi{Contact Lexical Flow Inference (CLFI)} algorithm. The dependency on a tree and an ancestral state reconstruction method is gone, but the propagation rules have become more numerous. This method can only represent the rough structure of the RFCI methods, the way in which the skeleton is revised during the propagation stage cannot be represented in a compact way. The full details of the method need to be taken from \sectref{sec:3.2.4}, and the literature quoted there.
-
-Like PLFI, the algorithm starts out with a fully connected graph, and attempts to find separating sets of increasing size $s$. In each iteration for a given size of separating sets, all links which still exist are sorted by the strength of the remaining flow, so that the algorithm first tries to remove the weakest links, and proceeds to the stronger ones later. Depending on the skeleton inference method, separating set candidates of size $s$ for the pair of languages connected by the current link are formed either from the remaining neighbors of both nodes, or only from sets of other nodes that form connection paths between the two languages. If a separating set is found, the current link is removed from the graph. Up to this point, the algorithm is thus identical to CLFI, except that no reconstructed proto-languages are added to the dataset, and no predefined links are added based on the guide tree.
-
-The algorithms mainly differ in the second stage, if directionality inference methods other than vanilla PC or TSS are used. As explained in \chapref{sec:3}, a successful v-structure test in the FCI algorithm no longer leads to the addition of fully directed arrows $L_i \arrowLA L_j \arrowAL L_k$, but to underspecified arrows $L_i \arrowOA L_j \arrowAO L_k$ that can later become either bidirectional or unidirectional arrows. This happens either through additional successful v-structure tests, or through one of the propagation rules $\mathcal{R}_1$ through $\mathcal{R}_{10}$ as described in \chapref{sec:3}. The resulting structure is a contact flow network consisting of both bidirected and directed arcs.
 
 \begin{algorithm}\small
   \begin{algorithmic}[1]
@@ -116,6 +111,13 @@ The algorithms mainly differ in the second stage, if directionality inference me
   \label{clfi-algorithm}
 \end{algorithm}
 
+\algref{clfi-algorithm} shows the adaptations needed to implement the \isi{Contact Lexical Flow Inference (CLFI)} algorithm. The dependency on a tree and an ancestral state reconstruction method is gone, but the propagation rules have become more numerous. This method can only represent the rough structure of the RFCI methods, the way in which the skeleton is revised during the propagation stage cannot be represented in a compact way. The full details of the method need to be taken from \sectref{sec:3.2.4}, and the literature quoted there.
+
+Like PLFI, the algorithm starts out with a fully connected graph, and attempts to find separating sets of increasing size $s$. In each iteration for a given size of separating sets, all links which still exist are sorted by the strength of the remaining flow, so that the algorithm first tries to remove the weakest links, and proceeds to the stronger ones later. Depending on the skeleton inference method, separating set candidates of size $s$ for the pair of languages connected by the current link are formed either from the remaining neighbors of both nodes, or only from sets of other nodes that form connection paths between the two languages. If a separating set is found, the current link is removed from the graph. Up to this point, the algorithm is thus identical to CLFI, except that no reconstructed proto-languages are added to the dataset, and no predefined links are added based on the guide tree.
+
+The algorithms mainly differ in the second stage, if directionality inference methods other than vanilla PC or TSS are used. As explained in \chapref{sec:3}, a successful v-structure test in the FCI algorithm no longer leads to the addition of fully directed arrows $L_i \arrowLA L_j \arrowAL L_k$, but to underspecified arrows $L_i \arrowOA L_j \arrowAO L_k$ that can later become either bidirectional or unidirectional arrows. This happens either through additional successful v-structure tests, or through one of the propagation rules $\mathcal{R}_1$ through $\mathcal{R}_{10}$ as described in \chapref{sec:3}. The resulting structure is a contact flow network consisting of both bidirected and directed arcs.
+
+
 \section{Evaluation of CLFI}\label{sec:7.6}
 The structure of this section exactly mirrors the order in which PLFI evaluation was performed in the last chapter. I start by discussing the behavior of the evaluation metrics developed there on the contact flow inference problem, and introducing an additional performance measure which captures how well the phylogenetic units are separated in the resulting network. Then, I again decide on one CLFI variant for the case studies by means of global results on the entire NorthEuraLex dataset. The discussion of the case studies refers back to the previous discussion of PLFI performance in each case study, and mainly discusses the differences in behavior, instead of going through each of the problems that persist again. The chapter closes with a validation of the findings about the relative performance of CLFI variants against the simulated data.
 
@@ -127,6 +129,7 @@ related languages to distribute the material to the other Uralic languages. From
 
 Due to the difficulty in finding a good definition of false negatives, I opted for the local perspective, counting many false negatives for contacts between proto-languages that are actually represented in a satisfactory manner. This means that all the numbers for skeleton recall I will be reporting do not reflect the actual quality of the networks, although they still fulfill their primary purpose of being able to compare the performance of CLFI variants.
 
+\newpage 
 Finally, there is one additional level on which contact flow networks can be evaluated. Since this time, we are not putting any phylogenetic information into the procedure, we can evaluate the result in terms of how well it captures the phylogenetic signal in the data. Ideally, the contact network should connect all languages that belong to the same phylum by a subnetwork of bidirected edges (reflecting the common proto-language as the hidden common cause), while at the same time, all links across phyla should not involve hidden common causes, and therefore be monodirectional. This implies a separation of phyla by directed arcs, and can be quantified by a \textit{\isi{phylum separation score}}, simply defined as the percentage of pairs of languages where the separation induced by the contact flow network (connection or non-connection by a path of bidirected edges) agrees with the separation defined by language family. The phylum separation score will be used as an additional point of evaluation on the 
 simulated data.
 
@@ -220,6 +223,7 @@ Secondly, in measuring the influences between \ili{Slavic languages}, \ili{Belar
  \label{baltic-result-contact}
  \end{figure}
  
+ \largerpage
  \subsubsection{Case study 2: Uralic and contact languages}
  \begin{sidewaysfigure}
  \includegraphics[width=\textwidth]{figures/uralic-contact-fs-tss.pdf}
