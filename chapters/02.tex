@@ -225,9 +225,9 @@ The examples of databases just listed are only the tip of an iceberg of smaller 
 \subsubsection{Cognate databases}
 The other type of lexical database does not consider the phonetic forms of primary importance, but encodes the presence or absence of cognate classes in each individual language. A phonetic database would focus on the information that the words for \textit{hand} in \ili{Armenian}, \ili{Albanian}, \ili{Greek}, and \ili{Georgian} are 
 {[[d⁀z]εrkʰ]}, 
-{[dɔʀə]},
-{[çeʀi]}, and
-{[χεlɪ]}, 
+{[dɔɾə]},
+{[çeɾi]}, and
+\ipa{[χεlɪ]}, 
 allowing a program to compare these strings in order to figure out whether they are related. In contrast, a cognate database would not provide the three words in a unified phonetic format, but instead encode the information that the first three words are cognates, while the fourth is unrelated, by assigning a \texttt{1} to the first three languages  and a \texttt{0} to Georgian in a column encoding the absence or presence of this cognate set.
 
 The advantages of cognacy encoding are that binary characters are easier to handle computationally, and that many disturbing factors such as loanwords or morphology are already filtered out during data preparation, leading to much cleaner data. The disadvantage is that cognacy-encoded databases need to be compiled either by experts in the history of the respective language family, or by going through the published etymological literature in language families where such work exists. Both approaches require an enormous amount of work, which makes typical cognacy-annotated databases much smaller than phonetic form databases, and also limits the number of language families for which they are available.
