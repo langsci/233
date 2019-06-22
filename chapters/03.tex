@@ -197,52 +197,52 @@ As we have seen in the previous section, any causal inference method which build
 The most straightforward statistical tests for conditional independence are based on testing for vanishing partial correlation. As \cite{baba_ea_2004} show, this is only guaranteed to work under the assumption that all involved variables are multivariate Gaussian, and does not provide us with a good test for other distributions, including discrete variables.
 
 The \isi{Pearson correlation} coefficient $\rho_{XY}$ of two variables $X$ and $Y$ is defined as follows:
-\begin{equation}
+\begin{equation*}
 \rho_{XY} := \frac{Cov(X,Y)}{\sqrt{Var(X)}\cdot \sqrt{Var(Y)}}
-\end{equation}
+\end{equation*}
 It is thus a normalization of the covariance $Cov(X,Y) := E[(X - E[X])(Y - E[Y)]$, which measures whether the two variables tend to deviate from their means in the same directions. We say that $X$ and $Y$ are \textit{correlated} if and only if $\rho_{XY} \neq 0$.
 
 A conditional variant is defined by the \textit{\isi{partial correlation}} $\rho_{XY\cdot \mathbf{Z}}$, which is defined as the Pearson correlation $\rho_{R_XR_Y}$ of the residuals $R_X$ and $R_Y$ resulting from the linear regression of $X$ and $Y$ with $\mathbf{Z}$. For instance, to compute the residual $R_X$ for a vector of $n$ regression variables $\mathbf{Z} = \{Z_1,\dots,Z_n\}$ from $N$ observations, we need to find the $n$-dimensional coefficient vector $\mathbf{w}^{*}_X$ which optimizes the following minimization problem:
 \newpage 
 
-\begin{equation}
+\begin{equation*}
  \mathbf{w}^{*}_X = \argmin{\mathbf{w}} \left\{\sum_{i=1}^N (x_i - \langle \mathbf{w}, \mathbf{z_i} \rangle)^2 \right\}
-\end{equation}
+\end{equation*}
 The observations of the residual $R_X$ are then $x_i - \langle \mathbf{w}^{*}_X, \mathbf{z_i} \rangle$ for $1 \leq i \leq N$,
 from which we can compute the Pearson correlation with the analogous residual $R_Y$.
 
 A more direct alternative is to compute $\rho_{XY\cdot \mathbf{Z}}$ via a recursive formula, which uses several partial correlations of lower order to compute one partial correlation of higher order, with Pearson correlation as the base case. For any $Z_0 \in \mathbf{Z}$, we have:
-\begin{equation}
+\begin{equation*}
  \rho_{XY\cdot \mathbf{Z}} = 
  \frac{\rho_{XY\cdot \mathbf{Z}\backslash\{Z_0\}} - \rho_{XZ_0\cdot \mathbf{Z}\backslash\{Z_0\}} \rho_{Z_0Y\cdot \mathbf{Z}\backslash\{Z_0\}}}
       {\sqrt{1-\rho^2_{XZ_0\cdot \mathbf{Z}\backslash\{Z_0\}}} \sqrt{1-\rho^2_{Z_0Y\cdot \mathbf{Z}\backslash\{Z_0\}}}}
-\end{equation}
+\end{equation*}
 
 To test for vanishing partial correlation in order to establish conditional independence,
 \citet[5.5]{spirtes_ea_2000} use Fisher's z-transform of the partial correlation $\hat{\rho}_{XY\cdot \mathbf{Z}}$ in the sample:
-\begin{equation}
+\begin{equation*}
  z(\hat{\rho}_{XY\cdot \mathbf{Z}}) := \frac{1}{2} \ln\left(\frac{1 + \hat{\rho}_{XY\cdot \mathbf{Z}}}{1 - \hat{\rho}_{XY\cdot \mathbf{Z}}} \right)
-\end{equation}
+\end{equation*}
 If $N$ is the sample size, $\sqrt{N - |\mathbf{Z}| - 3} \cdot z(\hat{\rho}_{XY\cdot \mathbf{Z}})$ roughly approximates a standard normal distribution if the null hypothesis $\hat{\rho}_{XY\cdot \mathbf{Z}} = 0$ holds. To see whether the vanishing correlation assumption can be rejected, we thus test whether we have $\sqrt{N - |\mathbf{Z}| - 3} \cdot |z(\hat{\rho}_{XY\cdot \mathbf{Z}})| > \Phi^{-1}(1 - \frac{\alpha}{2})$ for the cumulative distribution function $\Phi$ of the standard normal distribution. This is the default option for conditional independence tests implemented in the R package \texttt{pcalg} by \cite{kalisch_ea_2012}.
 
 \subsubsection{Testing for independence in the discrete case}\label{sec:3.2.2.2}
 \citet[5.5]{spirtes_ea_2000} also describe standard procedures for conditional independence tests in the discrete case. If we see each cell count $x_{ij}$ in a table resulting from $N$ samples of two variables $X_i$ and $X_j$ as one multinomially distributed variable, the expected value of $x_{ij}$ under the independence assumption is $E(x_{ij}) = \frac{\sum_j x_{ij} \cdot  \sum_i x_{ij}}{N}$. If we add a third variable $X_k$ for which $(X_i \indep X_j\ |\ X_k)$, the corresponding cell $x_{ijk}$ will have the expected value $E(x_{ijk}) = \frac{\sum_j x_{ijk} \cdot  \sum_i x_{ijk}}{\sum_{i,j} x_{ijk}}$. Analogously, for $n$ conditioning variables $X_{k_1}, \dots, X_{k_n}$, we get
-\begin{equation}
+\begin{equation*}
  E(x_{ijk_1\dots k_n}) = \frac{\sum_j x_{ijk_1\dots k_n} \cdot  \sum_i x_{ijk_1\dots k_n}}{\sum_{i,j} x_{ijk_1\dots k_n}}
-\end{equation}
+\end{equation*}
 
 These expected cell counts can be tested against the observed values using standard tests. Under the independence assumption, the following two test statistics are both $\chi^2$-distributed for an appropriate number of degrees of freedom $df$:
-\begin{equation}
+\begin{equation*}
  \chi^2 := \sum_{i,j,k_1,\dots,k_n} \frac{(x_{ijk_1\dots k_n} - E(x_{ijk_1\dots k_n}))^2}{E(x_{ijk_1\dots k_n})}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
  G^2 := 2 \cdot \sum_{i,j,k_1,\dots,k_n} x_{ijk_1\dots k_n} \ln \left( \frac{x_{ijk_1\dots k_n}}{E(x_{ijk_1\dots k_n})} \right)
-\end{equation}
+\end{equation*}
 In principle, the degrees of freedom for a test of the conditional independence $(X_i \indep X_j\ | X_{k_1}, \dots, X_{k_n})$
 can be computed from the number of categories $Cat$ for each variable as follows:
-\begin{equation}
+\begin{equation*}
  df = (Cat(X_i) - 1) \cdot (Cat(X_j) - 1) \cdot \prod_{i=1}^{n} Cat(X_{k_i})
-\end{equation}
+\end{equation*}
 This number is exponential in the number of conditioning variables, which will quickly lead
 to zero entries in the table that need to be corrected for. In the absence of a general rule,
 $df$ can be reduced by one for each zero entry as a rough heuristic.
@@ -252,47 +252,47 @@ $df$ can be reduced by one for each zero entry as a rough heuristic.
 A more general criterion for conditional independence stems from information theory, a branch of mathematics that is concerned with quantifying information and information flow. I will repeat the essential concepts of information theory here to provide some degree of self-containedness. The first chapters of any introductory textbook of information theory will introduce the same concepts with a lot more rigour and detail, also motivating the theory using a wealth of examples. For my purposes in this book, it satisfies to say that information theory will provide us with the mathematical tools for modeling languages as variables, and for defining the conditional independence tests that we will need to apply causal inference. The definitions as I state them in the following are adapted from \cite{cover_thomas_2006}.
 
 The central concept of information theory is called \textit{\isi{entropy}}, and can be seen as a measure of the expected amount of information provided by a single outcome of (or alternatively, the uncertainty contained in not knowing the outcome of) a random variable $X$. In the discrete case (to which we will confine ourselves here), the entropy $H(X)$ of a discrete variable $X$ with the set of possible outcomes $\Omega(X)$ is defined as
-\begin{equation}
+\begin{equation*}
  H(X) := - \sum_{x \in \Omega(X)} p(x) \log p(x)
-\end{equation}
+\end{equation*}
 
 The entropy of a discrete variable $X$ can be seen as the average information content of a single observation of that variable, or as the expected value of the \textit{\isi{self-information}} $I(x) := - \log p(x)$ associated with an event $\{X = x\}$. Self-information is also called \textit{surprisal} because it measures the unexpectedness (or amount of surprise) associated with the observation that $X$ has the value $x$.
 
 If we observe two information sources $X$ and $Y$ at the same time, some of the information we receive might coincide, which means that we cannot just add up the amount of information received by both sources to quantify our overall information. Instead, we generalize entropy to \textit{\isi{joint entropy}} $H(X,Y)$:
- \begin{equation}
+ \begin{equation*}
   H(X,Y) = -\sum_{x} \sum_{y} p(x,y) \log p(x,y)
- \end{equation}
+ \end{equation*}
 The amount of information we receive twice when jointly observing two information sources can be recast as the information
 that one variable $Y$ provides about the state of the other variable $X$. This symmetric measure
 is called the \textit{\isi{mutual information}} $I(X;Y)$:
- \begin{equation}
+ \begin{equation*}
   I(X;Y) := H(X) + H(Y) - H(X,Y) = \sum_{y} \sum_{x} p(x,y) \log \left( \frac{p(x,y)}{p(x)p(y)} \right) 
- \end{equation}
+ \end{equation*}
 Returning to individual events, we can define mutual information as the expected value of the \textit{\isi{pointwise mutual information}} $pmi(x;y)$
 between two observations:
- \begin{equation}
+ \begin{equation*}
   pmi(x;y) := \log \left( \frac{p(x,y)}{p(x)p(y)} \right) 
- \end{equation}
+ \end{equation*}
 Pointwise mutual information is very useful for quantifying the strength of associations between
 pairs of variable values. In \sectref{sec:4.4}, I will get back to PMI as a standard measure 
 of association between sounds in models of sound correspondences.
 
 Finally, we can measure the information which two variables $X$ and $Y$ provide about each other provided that the values of a set of certain other variables $\mathbf{Z}$ is known. This is called the \textit{\isi{conditional mutual information}} of $X$ and $Y$ given $\mathbf{Z}$:
- \begin{equation}
+ \begin{equation*}
   I(X;Y|\mathbf{Z}) := \sum_{\mathbf{z}} p(\mathbf{z}) \sum_{y} \sum_{x} p(x,y|\mathbf{z}) \log \left( \frac{p(x,y|\mathbf{z})}{p(x|\mathbf{z})p(y|\mathbf{z})} \right) 
- \end{equation}
+ \end{equation*}
 As \cite{yeung2008} demonstrates, it is easy to derive the following formula for computing conditional mutual information from joint entropies:
-\begin{equation}
+\begin{equation*}
  I(X;Y|\mathbf{Z}) = H(X,\mathbf{Z}) + H(Y,\mathbf{Z}) - H(X,Y,\mathbf{Z}) - H(\mathbf{Z})
-\end{equation}
+\end{equation*}
 The decisive property of mutual information for causal inference is that for joint distributions that are faithful to some causal graph, it provides us with a necessary and sufficient criterion for independence:
-\begin{equation}
+\begin{equation*}
  X \indep Y \Leftrightarrow I(X;Y) = 0.
-\end{equation}
+\end{equation*}
 More importantly for my application, this also extends to conditional mutual information, giving us the following characterization:
-\begin{equation}
+\begin{equation*}
  (X \indep Y\ |\ Z) \Leftrightarrow I(X;Y|Z) = 0.
-\end{equation}
+\end{equation*}
 Intuitively, this means that two sets of variables are independent given a third set of variables if and only if there is no information flow between the first two sets that could not be mediated by variables from the third set.
 
 Given this equivalence, an obvious idea for implementing a very general independence test now is to check for vanishing mutual information. The problem with mutual information is, however, that it is hard to compute or estimate for any interesting type of variable. This means that to exploit this characterization of independence, we need to rely on other more easily computable measures which in all relevant respects behave just like joint entropy.

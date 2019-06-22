@@ -1845,14 +1845,14 @@ The following visualization of the Glottolog 3.0 tree for the NorthEuraLex langu
 \chapter{Proof of submodularity}
 This appendix contains the proof showing that the measure $h(\mathbf{Z})$ for all subsets $\mathbf{Z} = \{Z_1,\dots,Z_m\} \subseteq \mathcal{L}$ of our set of languages $\mathcal{L}$ adheres to the elemental inequalities defining a submodular information measure.\\[0.5cm]
 To start with the third condition,
-\begin{equation}
+\begin{equation*}
  h(\emptyset) = \sum_{i = 1}^n |\emptyset| = 0.
-\end{equation}\\[0.5cm]
+\end{equation*}\\[0.5cm]
 Monotonicity is also trivially true:
-\begin{equation}
+\begin{equation*}
   h(\mathbf{Z} \backslash \{L_j\}) = \sum_{i = 1}^n \left(\left|\bigcup_{k=1}^m L_{k,i}(\omega)\right| - \left|L_{j,i}(\omega)\backslash \bigcup_{k=1}^m L_{k,i}(\omega)\right|\right) 
   \leq \sum_{i = 1}^n \left|\bigcup_{k=1}^m L_{k,i}(\omega)\right| = h(\mathbf{Z})
-\end{equation}\\[0.5cm]
+\end{equation*}\\[0.5cm]
 Finally, here is the not less elementary proof of the sub-modularity condition:
 \begin{multline}
  h(\mathbf{Z}) + h(\mathbf{Z} \cup L_h \cup L_j) 

@@ -31,30 +31,30 @@ A third possibility (and the one which I am going to build upon) starts with str
 In terms of a probabilistic model, this leaves us with a quite complex chain of random variables building on the basic view of languages as string generators. For each language $j$, we could start with a lexicon generator variable $Lex_j \colon \Omega \rightarrow \Sigma^*$ for some universal alphabet $\Sigma$ of phonetic symbols. Possible observations of such a variable could be phonetic strings such as [æææ], [ktkəəŋ], and infinitely many other highly improbable strings. Alternatively (and especially to model resampling), $Lex_j$ can be defined as selecting strings from a predefined set $L_j \in \Sigma^*$ containing all the strings of the lexicon, that is, in our case, a phonetic representation of all the lemmas in our database. On the NorthEuraLex data, the English variable would generate words such as [taʊn], [fiːvə], [hɛvɪ], [aɪ], but the assignment of these forms to meanings would be assumed to be entirely random.
 
 Any automated cognate detection procedure can now be conceptualized as a very complex function of all the lexicon generator variables which generates a set of cognate sets for each concept $C_i$:
-\begin{equation}
+\begin{equation*}
  cog(X_1,\dots,X_n)\ \colon\ \Omega \rightarrow \bigotimes_{i = 1}^{n} \wp\left(\bigcup_{j=1}^{m} Lex_j\right)^*
-\end{equation}
+\end{equation*}
 Unrelated languages can now be seen as independently sampling one or several of these cognate sets for each given concept. For related languages, we should then be able to measure a dependence in the form of non-zero mutual information. Intuitively, the more closely two languages are related, the more knowing which cognate sets one language picked will help us to predict the sets picked by the other language. If we know for one Germanic language (such as German) that it picked its word for `honey' from the cognate set of English \textit{honey}, this will be much more helpful for predicting to which class the \ili{Icelandic} word will belong, than knowing the cognate set of the equivalent in a more distantly related language like \ili{Greek}.
 
 Mathematically, we can now model each language $L_j$ as a variable picking for each concept a random subset of the set of cognate sets, i.e.:
-\begin{equation}
+\begin{equation*}
   L_j: \Omega \rightarrow \bigotimes_{i = 1}^{n} \wp(Cog_i)
-\end{equation}
+\end{equation*}
 From a probabilistic point of view, this is the shape of the variables I am going to operate on, although it would be very difficult to assign explicit joint probability distributions to sets of such variables. Instead, I will only use an information geometry on these variables.
 
 \section{A cognate-based information measure}\label{sec:6.2}
 We now turn to the question of how to estimate conditional mutual information between languages modeled as cognate set selectors. The basic idea is to define an easy-to-compute and intuitive measure $h$ on outcomes of cognate set selection, which mimics joint entropy in adhering to the basic properties of a submodular information measure. Based on this measure, I will then be able to define an equivalent of conditional mutual information between languages.
 
 A simple information content measure $i$ turns out to be easy to find: one can simply define $i(L_j)$ for a language variable $L_j$ as the number of cognate sets selected by the language across concepts:
-\begin{equation}
+\begin{equation*}
  i(L_j) := \sum_{i = 1}^n | L_{j,i}(\omega)|
-\end{equation}
+\end{equation*}
 I will treat this definition as the self-information of $L_j$, i.e.\ the outcome of a random variable measuring the entropy of language $L_j$. There is a very intuitive parallel between this measure and the view of entropy as a measure of descriptive complexity: given a set of concepts and a set of cognate sets for each concept, the minimum description length for the lexicon of $L_j$ can be seen as the length of the minimal specification of the mapping from concepts to cognate sets, which will be linear in the number of cognate sets touched by the language.
 
 The equivalent of the joint entropy $h(L_j,L_k)$ can now be defined as the number of cognate sets selected by one of the two languages, i.e.\ the union of the outcomes represented by both languages: 
-\begin{equation}
+\begin{equation*}
  h(L_j,L_k) := \sum_{i = 1}^n | L_{j,i}(\omega) \cup L_{k,i}(\omega)|
-\end{equation}
+\end{equation*}
 Analogously, we can define $h(\mathbf{Z})$ for all subsets $\mathbf{Z} = \{Z_1,\dots,Z_m\} \subseteq \mathcal{L}$ of our set of languages $\mathcal{L}$. In Appendix C, I show that this measure adheres to the elemental inequalities defining a submodular information measure. According to the theory introduced in \sectref{sec:3.2.2.3}, this establishes that the measure $h(\mathbf{Z})$ for a set of languages $\mathbf{Z} = \{Z_1,\dots,Z_m\}$, is similar enough to a measure of joint information to lead to a consistent definition of conditional mutual information.
 
 We have seen previously how cognacy data can be pictured as representing each language as a long binary vector in which each dimension represents a cognate set, and the values 1 and 0 represent the presence or absence of each cognate set in that language. By the information measure just introduced, the information content $i(L_j)$ of a language $L_j$ is then simply the number of ones in its vector representation, and the joint entropy is the number of ones in the disjunction of the language vectors, i.e. the vector which has a zero in the components where every language vector has a zero, and a one in all components where at least one language vector has a one. This representation is of course very sparse, since there will sometimes be dozens of cognate classes for any given concept observed across a hundred languages. Measures based on such a representation can be expected to be very prone to sampling errors, e.g. if a cognate for a word exists in a language, but simply was not attested in our lexical 
@@ -66,16 +66,16 @@ On such embedded cognacy vectors, conditional independence tests could be define
 
 \section{Conditional mutual information between languages}\label{sec:6.3}
 To arrive at the needed measure of conditional mutual information $i(L_i;L_j|\mathbf{Z})$, I can now simply use the standard definition on the information measure: 
-\begin{equation}
+\begin{equation*}
  i(L_i;L_j|\mathbf{Z}) = h(L_i,\mathbf{Z}) + h(L_j,\mathbf{Z}) - h(L_i,L_j,\mathbf{Z}) - h(\mathbf{Z})
-\end{equation}
+\end{equation*}
 Applying the definition of $h$ I just developed, and writing $cog(L_1,...,L_k)$ for the set of cognate sets shared by the languages $L_1,\dots,L_k$, $i$ becomes a count of conditional cognate overlap, which can be seen intuitively as the number of items in unblocked lexical flow. Note that the blocking of information flow was also the intuition behind the concept of d-separation which I introduced in \sectref{sec:3.1.2.1}, and the close correspondence between conditional independence constraints and d-separation in Bayesian networks is what will make it possible to infer networks via sequences of tests for vanishing conditional cognate overlap.
 
 In order to be able to define a global threshold value for conditional independence tests, conditional mutual information needs to be normalized by the number of remaining cognates not touched by any of the conditioning languages, yielding the normalized conditional mutual information $I(L_i;L_j|\mathbf{Z})$:
 
-\begin{equation}
+\begin{equation*}
  I(L_i;L_j|\mathbf{Z}) := \frac{|cog(L_i,L_j)\backslash\{c\ |\ \exists \{Z_1,\dots,Z_k\} \subseteq \mathbf{Z}\colon c \in cog(Z_1,\dots,Z_k)\}|}{\max\{|cog(L_i,Z_1,\dots,Z_k)|,|cog(L_j,Z_1,\dots,Z_k)|\}-|cog(Z_1,\dots,Z_k)|} 
-\end{equation}
+\end{equation*}
 
 Informally, $I(L_1;L_2|Z)$ thus quantifies the share of cognates between $L_1$ and $L_2$ which cannot be explained away by having been borrowed through a subset of the languages in $Z$. To use this measure of dependence as a conditional independence test, we simply check whether $I(L_1;L_2|Z) \leq \theta_{L_1,L_2}$ for a threshold $\theta_{L_1,L_2}$, which could be derived from the number of false cognates between $L_1$ and $L_2$ which we expect due to automated cognate detection. In practice, I am setting $\theta_{L_1,L_2} := 0.025$ for all language pairs because the distribution of false cognates is difficult to estimate, and language-specific thresholds did not lead to better results in initial experiments on a smaller language set. On the NorthEuraLex data, this means that languages which share 25 cognates or less will be unconditionally independent, and every link the algorithm establishes will explain an overlap of at least 26 cognates.
 
@@ -149,22 +149,22 @@ Can this basic idea be applied more directly to the cognate set overlaps between
 Let $c(L_1,\dots,L_k) := |cog(L_1,\dots,L_k)|$ be the number of cognate IDs shared between between all the languages $L_1,\dots,L_k$, and define $c(A-B-C)$ (the \textit{\isi{unique flow}}) as the number of cognates which no path excluding $B$ could have transported between $A$ and $C$. Now, we can quantify the answer to the question how much $B$ is needed to remove $A \arrowLL C$ based on the answers of two simpler questions. The first question is whether there is as much unique flow as expected if $B$ were needed for the separation. This can be captured by a single score measuring, with appropriate normalizations, the strength of unique flow in comparison to the flow we would expect if the true pattern were $A \arrowLA B \arrowLA C$ or $A \arrowAL B \arrowLA C$, i.e.\ if both arrows represented independent sampling of a certain number of items in the donor language, and the transmission of the sampled material in the recipient language. Due to the independence, the expected ratio of material shared 
 between all three languages can be computed as the product of the two ratios on the links, leading to the following score quantifying how much of potential overlap is reflected by unique flow through $B$:
 
-\begin{equation}
+\begin{equation*}
  ufr_1 := \frac{\frac{c(A-B-C)}{\min(c(A),c(B),c(C))}}
 	      {\frac{c(A,B)}{\min(c(A),c(B))}\cdot\frac{c(B,C)}{\min(c(B),c(C))}}
-\end{equation}
+\end{equation*}
 
 A second question about the relevance of $B$ for separation is how relevant the flow through $B$ is for generating the actual overlap between the three languages, i.e.\ which ratio of the cognates shared can only be explained by transmission through $B$. This leads to a simple quotient as the second score:
 
-\begin{equation}
+\begin{equation*}
  ufr_2 := \frac{c(A-B-C)}{c(A,B,C)}
-\end{equation}
+\end{equation*}
 
 While $c(A-B-C)$ is quite costly to compute, it has the advantage of not requiring reuse of unreliable separating sets, and being determined only by the data and the skeleton. Based on these two quantitative answers to the partial questions, I can define a combined score by multiplication, as a good v-structure should score low on both measures:
 
-\begin{equation}
+\begin{equation*}
  ufr := ufr_1 \cdot ufr_2
-\end{equation}
+\end{equation*}
  
 To observe the behavior of this \textit{\isi{Unique Flow Ratio (UFR)}} score, and to determine a good threshold for v-structure decisions, I produced five additional histories using the simulation model of \chapref{sec:5}, and extracted all triples of connected variables in the gold-standard graph. For these triples, it is thus known whether they constitute colliders or not, providing me with a training set of 1,277 instances in order to determine the threshold value. To make the test cases more realistic, I emulated the noise level inherent in automatically clustered cognate data by adding a number of spurious cognates to each pairwise overlap. This noise for each link was sampled uniformly from between 0 and 20 additional cognates. The resulting distribution of $ufr$ scores for both colliders and non-colliders is visualized in \figref{ufr-scores}. The distribution shows that as intended, almost all $ufr$ values for colliders are very close to zero. In contrast, the values for non-colliders are distributed 
 equally across the entire value range [0,1], with highest densities near 0.1 and 0.95, i.e. near the extreme values, but only a tiny fraction are as low as typical collider scores.
@@ -190,43 +190,43 @@ In addition, I will use $\delta := \frac{c(A,B,C)}{\min(c(A),c(B),c(C))}$ for th
 Let us now derive an approximate expression for $\hat{\delta}$ in the pattern $A \arrowLA B \arrowAL C$, which in the absence of latent variables is the only v-structure scenario. The only way in which a cognate set can come to be shared between all three languages in this scenario is if it was already shared between $A$ and $C$, and was borrowed into $B$ from one of the two languages. The percentage of material shared between $A$ and $C$ is given by $\beta$, and the percentage of material in $B$ borrowed from $A$ and $C$ is simply $\gamma$ and $\alpha$, respectively. Assuming independent sampling, the percentage of items which end up in $\delta$ via the transfer $A \arrowLA B$ should be equal to $\gamma \cdot \beta$, and the percentage transmitted via $C \arrowLA B$ should be $\alpha \cdot \beta$. When we simply add up these percentages, we will count some of the expected transferred items twice. The probability for each element in $cog(A,B,C)$ to have been selected twice is simply $\beta$, because this is the 
 probability that a random element picked for transfer from $A$ or $C$ is shared by both nodes. We therefore expect $\delta \cdot \beta$ items to have been counted twice. Using this as a correction, we receive $\hat{\delta} = \gamma \beta + \alpha \beta - \hat{\delta}\beta$. Resolving this expression for $\hat{\delta}$, we arrive at the following equation for the expected three-way overlap in a collider:
 
-\begin{equation}
+\begin{equation*}
  \hat{\delta}(A \arrowLA B \arrowAL C) := \frac{\beta(\alpha + \gamma)}{1 + \beta}
-\end{equation}
+\end{equation*}
 
 Note that we considered the shielded case here. The situation of an unshielded triple is covered by $\beta := 0$, which causes the definition to collapse to $\hat{\delta} = 0$, capturing the intuition I already used in UFR, namely that a v-structure should result in zero three-way overlap that cannot be explained by other paths.
 
 Turning the fitting of $\delta$ to $\hat{\delta}$ into a fit score could be done in a number of ways, but the easiest way turned out to be to form the quotient of the smaller by the larger of the two values, with special treatment for boundary cases to avoid division by zero:
 
-\begin{equation}
+\begin{equation*}
    ts(A \arrowLA B \arrowAL C ) :=
    \begin{cases}
      1 - \frac{\min(\delta,\hat{\delta}(A \arrowLA B \arrowAL C))}{\max(\delta,\hat{\delta}(A \arrowLA B \arrowAL C))} & \text{if } \delta > 0 \text{ or } \hat{\delta}(A \arrowLA B \arrowAL C) > 0\\
      0 & \text{if } \delta = 0 \text{ and } \hat{\delta}(A \arrowLA B \arrowAL C) = 0
    \end{cases}
-\end{equation}
+\end{equation*}
 \linebreak
 $ts(A \arrowLA B \arrowAL C)$ measures the strength of evidence which the cognacy overlaps between the three languages provide against the v-structure pattern. Because all triangle scores are on the same scale, but cover overlaps of different strengths, we cannot directly add up these triangle scores to aggregate the directionality information they encode into a global evidence score. To avoid strong influences from languages with little overlap to the pair in question, it is necessary to weight the contributions to the triangle score sum by their relevance to the link in question. One simple way to define these weights is by considering the strength of the connection of the third variable $C$ to either of the two variables involved, and then normalizing these weights to keep the weighted sum in the $[0,1]$ range. In practice, making the weight differences a little more pronounced helped to moderate the contribution of distant third languages, leading me to square the weights before normalization:
 
-\begin{equation}
+\begin{equation*}
  w'(A \arrowLA B; C) = \max\left(\frac{c(B,C)}{c(B)},\frac{c(A,C)}{c(A))}\right)^2
-\end{equation}
+\end{equation*}
 
 The normalization of weights then happens in the obvious way:
-\begin{equation}
+\begin{equation*}
  w(A \arrowLA B; C) = \frac{w'(A \arrowLA B; C)}{\sum_{D \notin\{A,B\}} w'(A \arrowLA B; D)}
-\end{equation}
+\end{equation*}
 
 Finally, the weighted sum of triangle scores over all third variables $C$ gives us the definition of the \textit{\isi{Triangle Score Sum (TSS)}} after which the directionality inference method is named: 
-\begin{equation}
+\begin{equation*}
  tss(A \arrowLA B) = \sum_{C \notin\{A,B\}} w(A \arrowLA B; C) \cdot ts(A \arrowLA B \arrowAL C)
-\end{equation}
+\end{equation*}
 
 The TSS can be calculated on each link for arrows in both directions, and the results have the same scale, yielding a natural decision criterion in terms of the evidence strength quotient:
 
-\begin{equation}
+\begin{equation*}
  sc(A \arrowLA B) = \frac{tss(A \arrowLA B)}{tss(B \arrowLA A)}
-\end{equation}
+\end{equation*}
 
 \largerpage
 To understand better how TSS works, let us take a look at an example from the Baltic Sea scenario. For the link betwen \ili{Russian} and \ili{Kildin Saami} ($sjd$), the triangles with the heighest weight are given by \ili{Skolt Saami} ($sms$), due to its high overlap with Kildin Saami, as well as by \ili{Polish} ($pol$) and \ili{Belarusian} ($bel$), both due to their high overlap with Russian. Together, these three triangles account for $62.3\%$ of the total weight sum, meaning that if a strong tendency arises from these three triangles, it will not be inverted by the remaining low-overlap triangles. Let us start with $ts(sjd \arrowLA rus \arrowAL bel)$. If this were a true v-structure, we would expect a three-way overlap of 34.55 cognates. In reality the overlap is higher at 47, giving a moderate counterevidence score of $ts(sjd \arrowLA rus \arrowAL bel) = 0.265$. From the reverse perspective, we have a much better fit at $ts(rus \arrowLA sjd \arrowAL bel) = 0.068$, because the prediction in this case 
@@ -266,14 +266,14 @@ From the large number of ASR methods discussed in the literature, I will only sa
 For the initial experiment, I opted for a simple recursive criterion. For each node in the expert tree, it includes those cognate sets that are present in a majority (more than 50\%) of its immediate daughter languages. This implies we start at the observable languages and their cognate sets, and reconstruct upwards in the expert tree, arriving at the root language(s) in a single bottom-up pass through the entire tree.
 
 If we introduce the notation $P(l = A)$ for the probability of cognate class $A$ being reconstructed for some concept in the language $l$ with children $l_1,\dots,l_k$, the \isi{majority-based reconstruction} can be written as a recursive formula
-\begin{equation}
+\begin{equation*}
    P(l = A) :=
    \begin{cases}
      1 & \text{if } \frac{1}{k} \sum_{i=1}^k P(l_i = A) > 0.5\\
      1 & \text{if } k = 0 \text{ and the word for the concept was assigned to class } A\\
      0 & \text{else }
    \end{cases}
-\end{equation}
+\end{equation*}
 \linebreak
 This simple definition directly implements an important property of any useful reconstruction, namely that a word which was borrowed once at an intermediate stage and therefore now turns up in every language of a branch with many languages, will not end up in the proto-language if there is no other branch which also features a cognate. This usage of the tree to channel the information is superior to an even more naive criterion that would simply count the occurrences of each cognate class at the leaves under each ancestral node.
 
@@ -295,17 +295,17 @@ The main problem of parsimony-based ASR is that different branch lengths cannot 
 
 \subsubsection{Fully probabilistic approaches}
 More recent approaches to ASR work in the maximum-likelihood (ML) paradigm. These fully probabilistic methods treat the discrete states $y$ at internal nodes as unknown parameters whose values need to be estimated given the data $x$ we observe. An obvious choice is the maximum likelihood estimator, which maximizes $P(y|x)$, the probability of different parameter values given the observed data, with the help of Bayes' rule:
-\begin{equation}
+\begin{equation*}
  P(y|x) = \frac{P(x|y)P(y)}{\sum_y P(y)P(x|y)}
-\end{equation}
+\end{equation*}
 While the denominator is hard to compute, it is independent of $y$ and is therefore irrelevant for maximizing the expression. Maximum likelihood estimation assumes that no prior information about plausible values $P(y)$ is available, which reduces the task of maximizing $P(y|x)$ to maximizing the likelihood $P(x|y)$ that we see the data given parameter values $y$. A good ML estimator will typically converge to the most likely value of $y$, although it is possible that other values of $y$ are almost as likely, and that the ML estimate $\hat{y}$ is even an outlier in the space of plausible parameter values. Still, ML estimates of model parameters provably maximize the agreement of the model with the data in many types of inference problems, given ML estimation a strong independent motivation outside the Bayesian paradigm.
 
 In the application to ASR, optimization is based on an explicit parameterized evolutionary model $P_{ij}(\theta)$ which fully describes how each state $i$ is likely to evolve along a given phylogenetic tree, and thereby assigns a probability $P(x|y,\theta)$ to the observed data for each set of parameter values. If the evolutionary model is Markovian (the probability of each state change only depends on the parent state, not on earlier states), dynamic programming can be used to efficiently derive the internal states $y$ which maximize $P(x|y,\theta)$. For different applications, different evolutionary models are plugged into this basic paradigm.
 
 Apart from the different evolutionary models, the main dividing line between approaches to ML-based ASR is in the method the optimal ancestral states at internal nodes are calculated. In the computationally simpler \isi{marginal reconstruction} as introduced by \cite{yang_ea_1995}, reconstruction of states at an internal node $A$ is done by re-rooting the tree such that $A$ becomes the root, and then computing the likelihoods for the different states at each node in a bottom-up fashion, summing over all possible combinations of states in the children $ch(A) = \{B_1,\dots,B_n\}$ down to the leaf nodes:
-\begin{equation}
+\begin{equation*}
  \hat{y}_A :=  \arg \max_i L_A(i),\ L_A(i) := \sum_{j_1,\dots,j_n} \prod_{k=1}^n P_{ij_k}L_{B_k}(j_k)
-\end{equation}
+\end{equation*}
 These values can again be computed by dynamic programming, meaning that the computation is only more time-consuming than the Sankoff algorithm by a factor linear in the number of ancestral nodes.
 
 By contrast, in the more complex \isi{joint reconstruction}, the likelihood is jointly maximized over reconstructed values at all nodes, which is computationally a lot more demanding. Moreover, according to \cite{yang_ea_1995}, this variant is less suitable for retrieving optimal reconstructions at each ancestral node (because suboptimal local solutions can be necessary for an optimal global reconstruction), which leads me to disregard it as an option for the current application.

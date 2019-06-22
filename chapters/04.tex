@@ -262,9 +262,9 @@ The reason for our problems is, of course, that there is some additional materia
 An important intuition for developing a mathematical model of ignorability is that the irrelevant material will be unsurprising. For instance, the infinitive ending \textit{-en} is present in virtually every German verb, so seeing it at the end of a verbal lexeme is completely unsurprising. Put differently, using the information-theoretic notion of surprise as high information, we will generally find that the low-information segments can more justifiably be ignored when comparing lexical material across languages. The easiest way to model information content mathematically builds on the probability of seeing the item in question given the knowledge we already have. In phonetic strings, the knowledge we have are the surrounding segments. If the probability of seeing a segment given the neighboring segments is very high, this implies low information content. These considerations lead us to the use of (gappy) n-gram models for each language and major word class (nouns, verbs, adjectives, and others).
 
 Formally, if we write $c_{abc}$, $c_{abX}$, $c_{Xbc}$, $c_{aXc}$ for the trigram and extended bigram counts, we can define the \textit{\isi{information content}} of the segment $c$ in its context $abcde$ as
-\begin{equation}
+\begin{equation*}
 I(abcde) := 1 - \max\left \{\frac{c_{abc}}{c_{abX}}, \frac{c_{bcd}}{c_{bXd}}, \frac{c_{cde}}{c_{Xde}} \right \}
-\end{equation}
+\end{equation*}
 In words, we use the minimum of the probabilities of not seeing $c$ given the two segments before, the two segments after, and the immediate neighbors of $c$. To derive information content values for peripheral segments of the string, we add the word boundary symbol $\#$ twice before the beginning and after the end of each string, both for deriving the trigram and extended bigram counts and for defining the positions $a_{-1}$, $a_{-0}$, $a_{k+1}$, and $a_{k+2}$ in a string $a$ of length $k$. For instance, in \ili{German} verbs, we receive $I($[hən\#\#]$)$ = 0.012, correctly capturing the aforementioned pattern of German verbs ending with the infinitive ending \textit{-en}.
 
 According to this definition, morphological material beyond the stem will typically have very low information content, because the inflection of citation forms (e.g.\ the infinitive ending verbs) will largely be predictable from the word class. For instance, expressing the relative information content using shades from white to black, the information content of the segments in the \ili{German} word \textit{vergehen} `to pass' is [{\color[rgb]{0.403,0.403,0.403}f}{\color[rgb]{0.772,0.772,0.772}ɛ}{\color[rgb]{0.856,0.856,0.856}ɐ}{\color[rgb]{0.238,0.238,0.238}ɡ}{\color[rgb]{0.485,0.485,0.485}e}{\color[rgb]{0.485,0.485,0.485}e}{\color[rgb]{0.924,0.924,0.924}ə}{\color[rgb]{0.988,0.988,0.988}n}], i.e.\ the infinitive ending disappears completely (as has happened diachronically to the English cognate \textit{forgo}), and the verbal prefix \textit{ver-} only contains a fraction of the information in the root \textit{geh-}, where the information about the long vowel amounts to little more than a single segment due to the German dichotomy of short [ɛ] vs.\ long [eː] (see \tabref{t:info-content-model} for exact numbers). Interestingly, this definition of information content models affixal and root-template morphology equally well. For \ili{Arabic} \textit{nabaḥa} `to bark', we get the desired result [{\color[rgb]{0.056,0.056,0.056}n}{\color[rgb]{0.769,0.769,0.769}a}{\color[rgb]{0.122,0.122,0.122}b}{\color[rgb]{0.731,0.731,0.731}a}{\color[rgb]{0.070,0.070,0.070}ħ}{\color[rgb]{0.814,0.814,0.814}a}] where the vowels contain a lot less information that would be relevant for cross-language comparison. Our simple information model is thus powerful enough even to detect the three-consonant root structure of \ili{Semitic languages}.
@@ -287,29 +287,29 @@ According to this definition, morphological material beyond the stem will typica
 
 \subsection{Implementing IWSA}\label{sec:4.3.3}
 Given a language-specific information content model which assigns an information content value to every segment in our tokenized IPA strings, the next question to answer is how we can make the information content inform our pairwise comparisons. The solution I adopted is to use information content in a modified edit distance measure which is computed by aligning two strings $a$ (length $n$) and $b$ (length $m$). To compute this distance measure, the dynamic programming table is filled by the recursion
-\begin{equation}
+\begin{equation*}
 M(i,j) := M(i-1,j-1) + d(a_i,b_j) \cdot s(a_i,b_j),
-\end{equation}
+\end{equation*}
 where $d(a_i,b_j)$ is the segment distance inferred from the data (as described in the next section), and the \isi{combined information content} $s(a_i,b_j)$ is defined as the quadratic mean of both information content scores:
-\begin{equation}
+\begin{equation*}
 s(a_i,b_j) := \sqrt{\frac{I(a_{i-2}\dots a_{i+2})^2 + I(b_{j-2}\dots b_{j+2})^2}{2}}
-\end{equation}
+\end{equation*}
 The quadratic mean is optimal for combining information content values for three reasons. First, it rewards high similarity of aligned segments with equally high information content, which is the core mechanism for finding matching stems. At the same time, it does not strongly penalize alignment of dissimilar low-information segments, which is important for deriving low distance scores for cognates that differ e.g.\ in a prefix, or in an infinitive ending. Finally, the quadratic mean strongly discourages alignment of a high-information segment with a low-information segment if the segment similarity is low, which is important to prevent a low-cost match of parts of the stem which call cognacy into question with irrelevant parts of the other string.
 
 In the case of a gap, we simply define the combined information score $s(a_i,-)$ as the score $I(a_{i-2}\dots a_{i+2})$ of the non-gap segment, which means that we penalize the deletion of high-information segments, but not of irrelevant ones.
 
 The information content also gives rise to the alternative language-specific definition of phonetic string length which was used in \cite{dellert_buch_2015} for measuring basicness:
-\begin{equation}
+\begin{equation*}
 l(a) := \sum_{i=1}^{a.length} I(a_{i-2}\dots a_{i+2})
-\end{equation}
+\end{equation*}
 Here, the indices which reach across the length of the word are intended to denote the boundary symbol $\#$ discussed before. For instance, where the \ili{German} verb \textit{gehen} [ɡeeən] `to go' has string length 5 by the standard definition, we get $l($[ɡeeən]$) = I($[\#\#ɡee]$) + I($[\#ɡeeə]$) + I($[ɡeeən]$) + I($[eeən\#]$) + I($[eən\#\#]$) = 1.533$, i.e. it is comparable to a three-segment word like its \ili{English} cognate \textit{go} in information content ($l($[ɡəʊ]$) = 1.619$).
 
 But this definition of word length does not only discount predictable morphemes like German \textit{-en}, it also corrects for the effect of higher average word length in languages with small phoneme inventories. In a language with a small phoneme inventory (like \ili{Spanish}), information values will generally be lower because the probability mass for each segment needs to be distributed over fewer possible contexts.
 
 The string distance measure is normalized through division by the maximum of the so-defined sequence lengths, with the same reasoning as the equivalent normalization for the Levenshtein distance, i.e.\ dividing by the length of the longer string:
-\begin{equation}
+\begin{equation*}
 d(a,b) := \frac{M(n,m)}{\max\{l(a),l(b)\}}
-\end{equation}
+\end{equation*}
 
 I  propose to call this Information-Weighted Sequence Alignment (IWSA)\is{IWSA (Information-Weighted Sequence Alignment)}. The associated string distance measure is the information-weighted distance (IWD)\is{IWD (Information-Weighted Distance}, and it is this distance that $d(a,b)$ for phonetic strings $a$ and $b$ will denote throughout the rest of this book.
 
@@ -418,9 +418,9 @@ The most large-scale work on cross-linguistically reoccurring sound corresponden
 
 \subsection{Modeling sound correspondences as similarity scores}
 The essential concept behind modern work on sound correspondence detection has been pointwise mutual information (PMI), which we already encountered in \chapref{sec:3}. In words, it is defined as the logarithm of the observed number of cooccurrences of two events divided by the number of cooccurrences we would expect if both events were independent. Pointwise mutual information has successfully been applied in many areas of computational linguistics. For instance, it is a well-established method for inferring multi-word expressions \citep[e.g.][]{bouma2009}. Applying this to sound correspondences by writing the joint probability of occurrences between two segments $s_1$ and $s_2$ as $p(s_1,s_2)$, the pointwise mutual information of these segments would be defined as
-\begin{equation}
+\begin{equation*}
 i(s_1,s_2) := \log \frac{p(s_1,s_2)}{p(s_1)p(s_2)}
-\end{equation}
+\end{equation*}
 
 The problem of pointwise mutual information for sound correspondences is that due to the non-random nature of phoneme sequences (e.g.\ a preference for the consonant-vowel pattern CVCVCV over CCCVVV), there will always be non-zero mutual information between any pair of consonants and vowels, even if the languages the correspondences are inferred for are completely unrelated. It is unclear how one could correct for this effect.
 
@@ -430,15 +430,15 @@ The decisive idea which helped to successfully address this problem goes back to
 In my architecture, I stay within the tradition of the permutation framework, although with some slight adaptations due to the use of information weights, and the necessity to derive segment distances in the range $[0,1]$ for IWSA. This means that we need to map the permutation-based PMI scores, which will typically end up in the range between -5 and 5, onto distance values in this range. Inspection shows that a score lower than -1 always indicates that the two segments involved should never be aligned, and that values higher than 2 are an indication of near perfect correspondences, meaning that alignment of such segments should not cost anything. Taking the simplest possible approach to building on these considerations in order to map the PMI score $pmi(a,b)$ between segments $a$ and $b$ to distances in the desired range, in a first step we disallow values above 2 and below -1 to yield a truncated version $tpmi(a,b) = \min(2,\max(-1,pmi(a,b)))$. In the second step, the values from the range $[-1,2]$ are
 inverted (because high PMI means low distance), and mapped linearly to the desired range by shifting the minimal value to $0$ and scaling by a factor of $3$, leading to the transformation $(2 - tpmi(a,b))/3$. We end up with the following formula for inferring global segment distances:
 
-\begin{equation}
+\begin{equation*}
 w_{glo}(a,b) := \frac{2 - \min\left(2,\max\left(-1,\ln \left( \frac{c(a,b)}{\hat{c}(a,b)} \right)\right)\right)}{3}
-\end{equation}
+\end{equation*}
 
 The interesting decisions are now hidden behind the symbols $c$ and $\hat{c}$. Unlike in List's approach, the counts $c$ do not count the number of times the symbols were aligned directly, but each instance in a candidate cognate pair (an alignment with normalized Levenshtein distance smaller than 0.5) only counts with its combined information content. Using the notation $al(w,v)$ for the optimal information-weighted alignment of a word pair $(w,v)$ according to the current segment distances, $al(w,v).sc$ for the distance score resulting from that alignment, and $al(w,v).v$ and $al(w,v).w$ to refer to the individual strings (with gap symbols) in which positions can be indexed by subscripts, this way of counting pairs of aligned segments can be written in one expression as follows:
 
-\begin{equation}
+\begin{equation*}
 c(a,b) := \sum_{L_1,L_2 \in \mathcal L} \hspace*{0.3cm} \sum_{\substack{(w,v) \in lex(L_1,L_2),\\ al(w,v).sc < 0.5}} \hspace*{0.3cm} \sum_{\substack{1 \leq i \leq al(w,v).len,\\ al(w,v).w_i = a,\\ al(w,v).v_i = b}} s(al(w,v).w_i,al(w,v).v_i)
-\end{equation}
+\end{equation*}
 
 Without taking information content into account when counting occurrences, regularly recurrent morphology would inflate the similarity between some very distinct phonemes. For instance, the frequent mapping of \ili{Turkish} infinitive endings \textit{-mak} and \textit{-mek} on the \textit{-u} in closely related \ili{Tatar} would result in a spurious correspondence between [m] and [u]. More generally, information content weighting of counts removes the effect of reoccurring morphological material in non-stemmed data.
 
