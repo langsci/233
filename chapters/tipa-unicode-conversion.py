@@ -67,7 +67,7 @@ with open(sys.argv[1],"r") as tex_file:
       elif current_state == "tipa":
         current_tipa += c
         if c == "}" and current_tipa_char == "":
-          print(sys.argv[1] + "\t" + str(line_number) + "\t" + current_tipa + "\t" + current_unicodeipa + "}")
+          #print(sys.argv[1] + "\t" + str(line_number) + "\t" + current_tipa + "\t" + current_unicodeipa + "}")
           output_line += current_unicodeipa + "}"
           current_tipa = ""
           current_unicodeipa = ""
@@ -85,4 +85,4 @@ with open(sys.argv[1],"r") as tex_file:
             current_unicodeipa = ""
             current_tipa_char = ""
             current_state = ""
-    #print(output_line)
+    print(output_line)
