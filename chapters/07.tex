@@ -200,7 +200,7 @@ Again, the different variants can be ranked by an overall performance score defi
 \subsection{Qualitative discussion of NorthEuraLex scenarios}
 Getting back to the case studies, this time I use the FS-TSS variant of the CLFI algorithm on the same data, and again visualize the difference to the gold standard in the form of evaluation graphs, with the same color coding as before. Due to the false negative issue, we can expect to see many more dotted arrows in light gray this time, indicating how many links in the skeleton were counted as missing, and explaining in a visual way how the low skeleton recall values came about.
 
- \subsubsection{Case study 1: the Baltic Sea area}
+ \subsubsection{Case study 1: The Baltic Sea area}
 Repeating the first experiment on the Baltic Sea data, we see in Figure \ref{baltic-result-contact} that most of the contacts which were inferred successfully by PLFI appear in the contact flow network as well. As discussed in the PLFI case study, the problem with the influence of \ili{German} on \ili{Livonian} disappears under the TSS criterion. However, two other problems have appeared instead.
 
 Firstly, CLFI shares the problem that it is most parsimonious for the model to explain away the influence of \iso{deu} on \iso{lav} by conditioning on \iso{liv},  such that \ili{Livonian} is inferred as acting as an intermediary for the transport of \ili{German} lexical material into \ili{Latvian}. This complements the now correctly detected v-structure pattern \iso{deu} $\arrowLA$ \iso{liv} $\arrowAL$ \iso{lav}, and produces an additional arrow \iso{liv} $\arrowLA$ \iso{lav} which combines into the erroneous bidirected arrow. Note that \ili{Dutch} as a proxy for \ili{Low German} plays a role here again, this time explaining the West Germanic loans in Latvian that cannot have traveled via Livonian because they are not attested there.
@@ -231,7 +231,7 @@ The only major problem with this result is a very interesting cluster of inverte
 
 Apart from this cluster of inverted arrows, the inferred contact flow network does not have any serious problems. The empty green arrows in the evaluation graph might serve to highlight a general difficulty of contact flow inference, however. To explain why so much spurious family-internal directionality is inferred, let us consider the \ili{Saami languages}. Like the other \ili{Western Saami languages}, \ili{Northern Saami} (\iso{sme}) has loans from \ili{Norwegian}, but virtually all of these also exist in the smaller Saami languages that have been in even closer contact with Scandinavian languages. This means that it is most parsimonious for the model to explain away the connection from \iso{sme} to \iso{nor} by conditioning on \iso{sma} and \iso{smj}. Locally, this causes the two languages to look like mixtures of their more easterly relatives with Norwegian, leading to directional arrows from \iso{sme} and \iso{smn} into \iso{sma} and \iso{smj}.
 
-\subsubsection{Case study 3: the linguistic landscape of Siberia}
+\subsubsection{Case study 3: The linguistic landscape of Siberia}
  
 \begin{sidewaysfigure}
  \includegraphics[width=0.8\textwidth]{figures/siberia-contact-fs-tss.pdf}
@@ -248,7 +248,7 @@ Apart from this cluster of inverted arrows, the inferred contact flow network do
  Finally, failure to recognize the directionality of contacts between \ili{Chinese}, \ili{Japanese}, and \ili{Korean} is again due to the absence of high-overlap triples that would yield directional information. The most relevant triple for all connections between these three isolates (in our study) is the one formed by the three languages. But the three-way overlap between the three languages is only very small at $|cog($\iso{cmn}$,$\iso{jpn}$,$\iso{kor}$)| = 14$, showing that the expected problems with recognizing Chinese loans based on \ili{Mandarin Chinese} have indeed materialized. In this triangle, there is not enough room for different directions to vastly differ in the fit of their prediction to the true overlap size, leading to hints of equal strength in every direction. In general, lexical flow inference will always run into problems when isolates are involved, and we can only expect it to work well if both languages connected by the link of interest have close relatives in the dataset. This is the reason why contact flow 
 inference worked so much better on the Baltic Sea and Uralic test sets (where larger families meet) than in isolate-ridden Siberia, where even the colonial language is an isolate in our dataset.
  
- \subsubsection{Case study 4: a visit to the Caucasus}
+ \subsubsection{Case study 4: A visit to the Caucasus}
  \begin{figure}
  \includegraphics[width=\textwidth]{figures/caucasus-contact-fs-tss.pdf}
  \vspace*{5mm}

@@ -69,7 +69,7 @@ To arrive at the needed measure of conditional mutual information $i(L_i;L_j|\ma
 \begin{equation*}
  i(L_i;L_j|\mathbf{Z}) = h(L_i,\mathbf{Z}) + h(L_j,\mathbf{Z}) - h(L_i,L_j,\mathbf{Z}) - h(\mathbf{Z})
 \end{equation*}
-Applying the definition of $h$ I just developed, and writing $cog(L_1,...,L_k)$ for the set of cognate sets shared by the languages $L_1,\dots,L_k$, $i$ becomes a count of conditional cognate overlap, which can be seen intuitively as the number of items in unblocked lexical flow. Note that the blocking of information flow was also the intuition behind the concept of d-separation which I introduced in \sectref{sec:3.1.2.1}, and the close correspondence between conditional independence constraints and d-separation in Bayesian networks is what will make it possible to infer networks via sequences of tests for vanishing conditional cognate overlap.
+Applying the definition of $h$ I just developed, and writing $cog(L_1,...,L_k)$ for the set of cognate sets shared by the languages $L_1,\dots,L_k$, $i$ becomes a count of conditional cognate overlap, which can be seen intuitively as the number of items in unblocked lexical flow. Note that the blocking of information flow was also the intuition behind the concept of d-separation which I introduced in \sectref{sec:3.2.1.2}, and the close correspondence between conditional independence constraints and d-separation in Bayesian networks is what will make it possible to infer networks via sequences of tests for vanishing conditional cognate overlap.
 
 In order to be able to define a global threshold value for conditional independence tests, conditional mutual information needs to be normalized by the number of remaining cognates not touched by any of the conditioning languages, yielding the normalized conditional mutual information $I(L_i;L_j|\mathbf{Z})$:
 
@@ -566,8 +566,8 @@ different edge types used in evaluation graphs for easier reference. Intuitively
  \begin{figure}
    \centering
    \fittable{
-   \begin{tabular}{|ll|}
-     \hline
+   \begin{tabular}{ll}%{|ll|} %suggestion by Stefan, no preference (Johannes)
+     %\hline
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{000000} \draw[tempcolor,-Stealth,thick] (1,0.0) -- (3,0.0); \end{tikzpicture} & predefined arrow (defined by underlying tree) \\
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{339933} \draw[tempcolor,-Triangle,thick] (1,0.0) -- (3,0.0); \end{tikzpicture} & correct directed link across families (skeleton TP, arrow TP, arrow TN) \\
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{339933} \draw[tempcolor,-Triangle,thick] (1,0.0) -- (3,0.0); \end{tikzpicture} & correct directed link within family (skeleton TP, arrow TN) \\
@@ -579,7 +579,7 @@ different edge types used in evaluation graphs for easier reference. Intuitively
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{808080} \draw[tempcolor,thick]    (1,0.0) -- (3,0.0) [dashed] ; \end{tikzpicture} & spurious undirected link (skeleton FP) \\     
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{c0c0c0} \draw[tempcolor,-{Triangle[open]},thick] (1,0.0) -- (3,0.0) [dotted] ; \end{tikzpicture} & missing directed link (skeleton FN) \\
      \begin{tikzpicture}[baseline=-0.5ex] \definecolor{tempcolor}{HTML}{c0c0c0} \draw[tempcolor,thick]    (1,0.0) -- (3,0.0) [dotted] ; \end{tikzpicture} & missing undirected link (skeleton FN) \\
-     \hline
+     %\hline
    \end{tabular}
    }
    \caption{Summary of combined color, line style and shape coding used in evaluation graphs}
@@ -588,7 +588,7 @@ different edge types used in evaluation graphs for easier reference. Intuitively
  
  After a quick summary of the result for each case study, I will mostly focus on individual cases of red and spurious links, and go into the details of the computation to elucidate why this variant of PLFI failed on these links. These investigations will help to get a full picture of why PLFI is not a perfect method, and lead to some ideas for possible future improvements beyond the current state.
  
- \subsubsection{Case study 1: the Baltic Sea area}
+ \subsubsection{Case study 1: The Baltic Sea area}
   \begin{figure}
  \includegraphics[width=\textwidth]{figures/baltic-fs-ufr-ml-multi.pdf}
  \vspace*{5mm}
@@ -630,7 +630,7 @@ different edge types used in evaluation graphs for easier reference. Intuitively
  \label{uralic-result-phylo}
  \end{sidewaysfigure}
  
- \subsubsection{Case study 3: the linguistic landscape of Siberia}
+ \subsubsection{Case study 3: The linguistic landscape of Siberia}
  The Siberian data display the same large-scale pattern which we already saw in European Russia: all the minority languages have borrowed much of the vocabulary for modern life from \ili{Russian}. As desired, this pattern also appears as the dominant feature of the linguistic area in the inferred lexical flow network visualized in \figref{siberia-result-phylo}. However, two of the arrows, the ones from Russian to \ili{Sakha} (\iso{sah}) and \ili{Evenki} (\iso{evn}), do not have the desired direction. Again, the reason lies in incorrect results of v-structure tests. The triangle \iso{bua} $\arrowLL$ \iso{sah} $\arrowLL$ \iso{rus} does not look at all like a v-structure, because a very large part of the material shared between Russian and \ili{Buryat} (\iso{bua}) is also shared with Sakha, to the point where in a similar pattern to the German-Livonian problem discussed before, conditioning on Sakha actually screens off Russian from Buryat. Due to the failed v-structure test, the correct arrow from Buryat into Sakha is propagated into Russian. The other failed test is for the v-structure \proto{Tungusic} $\arrowLA$ \iso{evn} $\arrowAL$ \iso{rus} which again misses the UFR criterion, albeit at a rather low UFR score of 0.057. Since the inheritance from Tungusic\il{Tungusic languages} is fixed, the only way to resolve this triple in such a way that no v-structure arises, is again by inferring an arrow into Russian.
  
  Coming to the spurious connections, the influence of \ili{Russian} on the two \ili{Yukaghir languages} was detected as going into Pro\-to-Yu\-ka\-ghir, again because of the impossibility for the reconstruction algorithm to decide that a cognate class appearing in both daughter languages should not be projected to the proto-lan\-guage. Assuming two separate arrows into the two individual languages is simply not the parsimonious solution if we do not include the knowledge that Proto-Yukaghir had already ceased to exist when the Yukaghirs were colonized. Exactly the same problem also leads to the spurious connections between Russian and Proto-Chukotko-Kamchatkan\il{Chukotko-Kamchatkan languages} as well as between Russian and Eskimo-Aleut\il{Eskimo-Aleut languages}.
@@ -647,7 +647,7 @@ different edge types used in evaluation graphs for easier reference. Intuitively
  \label{siberia-result-phylo}
 \end{sidewaysfigure}
 
-\subsubsection{Case study 4: a visit to the Caucasus}
+\subsubsection{Case study 4: A visit to the Caucasus}
 With the Caucasus scenario, we finally encounter the most complex test case. As can be seen on visual inspection of the evaluation graph in \figref{caucasus-result-phylo}, the more peripheral influences from \ili{Arabic} and \ili{Russian} into the Caucasus area are inferred correctly, but in the chaotic situation among Caucasian languages, there is just too much interacting and contradictory signal for PLFI to perform well.
  
 The problems within Daghestanian\il{Daghestanian languages} might also be due to imperfections in the gold standard (the Caucasus being the only region where it was almost impossible to find literature on language contacts for some languages), but the case of \ili{Georgian} (\iso{kat}), an isolate in this dataset, points to a further issue that requires some consideration.
