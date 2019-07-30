@@ -43,6 +43,7 @@ Taking a step back from the RFCI algorithm and considering the problem of inferr
 
 The observation I used in deriving UFR was that for $B$ not to be necessary for separation, all cognate sets with reflexes in $A$ and $C$ must also have had reflexes in neighbors forming possible flow paths between $A$ and $C$ not going through $B$. For instance, to show that \ili{English} was not necessary for separating Icelandic from French, and therefore establish English as a collider in this triangle, we need to show that there is an alternative path by which all the overlap between Icelandic and French can be explained. The problem in contact flow inference is that these alternative flow paths are not necessarily visible any longer, because they could actually involve proto-languages, as is the case between Icelandic and French, which share some lexical material due to their common Indo-European ancestry. Unless we have other Indo-European languages which form possible flow paths, $A$ and $C$ might therefore share some lexical material which cannot be explained by any path through the network except through $B$, but the three languages still form a collider $A \rightarrow B \leftarrow C$.
 
+\newpage 
 These considerations give rise to a possibly more robust way of testing unshielded triples for v-structures. The question is how to test that $c(A,B,C)$, the count of cognates shared between all three varieties, is significantly smaller than the number we would expect under any of the other causal scenarios. To predict this number, we assume (as before) that when a language borrows lexical material from another, it will sample the lexical material to borrow from the donor language independently from a different language borrowing from the same donor. While this assumption might not be warranted in every individual case (e.g., the name for a newly introduced trade good will often be introduced to many neighboring languages simultaneously), we can still assume this independence of contacts, because there is no obvious mechanism which would coordinate the shape of linguistic influence between two different pairs of languages across their lexicons. In order to violate the independence assumption, such a mechanism would have to make it more likely for words in $B$ which are already borrowings from $A$ to be borrowed further by $C$ from $B$. On rare occasions, such a preference might occur if e.g. the loans from $A$ fit much better into the phonetic system of $C$, but this would clearly be an exceptional case that will not be frequent enough to warrant the costs of foregoing a generally applicable heuristic.
 
 The direct consequence of this independence assumption is that under any of the three scenarios $A \rightarrow B \rightarrow C$, $A \leftarrow B \rightarrow C$, and $A \leftarrow B \leftarrow C$, the overall ratio of shared cognates should be roughly equal to the product of the ratio of shared cognates on each of the two links. For instance, if \ili{Turkish} borrows 30\% of its vocabulary from \ili{Persian}, and \ili{Albanian} borrows 20\% of its vocabulary from Turkish, we would expect 6\% of the Albanian lexicon to be of Persian origin. Now assume that the actual amount of lexical overlap between Albanian and Persian was determined to be 5\%. How can we decide that the observed ratio $\delta$ (5\%) is significantly different from the $\hat{\delta}$ (6\%) we derived? There is no obvious way to model the distribution of either in a way that would provide a reliable statistical test, and my previous solutions (UFR and TSS directionality inference) both relied on what could be called a local explainability assumption. This assumption that the local scenario completely explains the overlap pattern in each triangle was already a problematic assumption before, even though adding some tolerance through threshold values turned out to work well enough. In the presence of latent confounders, however, the local explainability assumption is violated in most triangles, because in very many cases there will be in overlap due to relationship between at least two out of the three languages.
@@ -55,6 +56,7 @@ For an example of a true v-structure, consider another triple of languages consi
 
 In what follows, I will write $vStructTest(A \rightarrow B \leftarrow C)$ for language variables to express a v-structure check. In the FCI directionality inference variant, this will denote the usual check in the first separating set that is found. The shorthand VCI will be used to denote the variant of the algorithm where we check whether $chyper(c(A,B,C),c(A,B),c(B)-c(A,B),c(B,C)) < 0.05$, i.e.\ the v-structure test developed here at a significance level of $0.05$. UFR will continue to be used for the unique correlate flow check as introduced in the previous chapter.
 
+\newpage 
 \section{Contact Lexical Flow Inference (CLFI)}\label{sec:7.5}
 
 \begin{algorithm}\small
@@ -121,15 +123,16 @@ The results of CLFI can largely be evaluated just like PLFI, given a gold standa
 
 For contact flow inference, the problem is aggravated by the fact that each such contact can only be visible as an arrow between descendant languages. One could certainly argue that ancient influence of e.g.\ Proto-Iranian on Proto-Uralic will justify any arrow from an Iranian\il{Iranian languages} into a Uralic language\il{Uralic languages}, for instance from \ili{Persian} into \ili{Udmurt}. From the viewpoint of arrow evaluation, such an arrow would be a true positive. The difficult question is whether the absence of such an arrow also constitutes a false negative. From a local perspective, it is clear that intensive contact between proto-languages should lead to an overlap, detectable as caused by contact, between any pair of descendant languages. However, the lexical flow separation criterion implements a version of Occam's razor when it comes to leaving links in the skeleton, typically leaving only one entry point (e.g.\ Udmurt) for the borrowed material, and then using the existing network among related languages to distribute the material to the other Uralic languages. From the user's perspective, having a graph that is not cluttered by links between each pair of Uralic and Iranian languages, but still containing the essential information that there was influence of some Iranian on some Uralic language, might be the better solution, especially if the link connects the two languages where the contact is most visible, already indicating a good entry point for closer investigation. Still, relaxing the criterion for false negatives in the skeleton to the point where, say, any influence from some Indo-European on some Uralic language would cover all of the individual contacts we were previously interested in (\ili{Swedish} on \ili{Finnish} vs. \ili{German} on \ili{Estonian}, for instance), is certainly not the way to go for a quantitative evaluation.
 
+\newpage 
 Due to the difficulty in finding a good definition of false negatives, I opted for the local perspective, counting many false negatives for contacts between proto-languages that are actually represented in a satisfactory manner. This means that all the numbers for skeleton recall I will be reporting do not reflect the actual quality of the networks, although they still fulfill their primary purpose of being able to compare the performance of CLFI variants.
 
-\newpage 
+   
 Finally, there is one additional level on which contact flow networks can be evaluated. Since this time, we are not putting any phylogenetic information into the procedure, we can evaluate the result in terms of how well it captures the phylogenetic signal in the data. Ideally, the contact network should connect all languages that belong to the same phylum by a subnetwork of bidirected edges (reflecting the common proto-language as the hidden common cause), while at the same time, all links across phyla should not involve hidden common causes, and therefore be monodirectional. This implies a separation of phyla by directed arcs, and can be quantified by a \textit{\isi{phylum separation score}}, simply defined as the percentage of pairs of languages where the separation induced by the contact flow network (connection or non-connection by a path of bidirected edges) agrees with the separation defined by language family. The phylum separation score will be used as an additional point of evaluation on the simulated data.
 
 \subsection{Overall quantitative results for NorthEuraLex data}
 Again, I start by quantitatively evaluating the flow networks produced by different variants of the CLFI algorithm on the entire NorthEuraLex dataset against the gold standard, and we first consider skeleton and arrow performance separately. \tabref{contact-skeleton-evaluation-nelex} compares the skeleton precision and recall. Remember that due to the way false negatives are counted, the skeleton recall suggests a lot more information loss than is actually readable from the output. While the differences between the different methods are much less pronounced than they were for PLFI, the main trend in these results is clearly in favor of flow separation. In both cases, the RFCI skeleton is identical or almost identical to the PC skeleton, indicating that discriminating paths do not form very often in this application if the checks are performed based on flow separation.
 
-\begin{table}
+\begin{table}[t]
  \centering
  \begin{tabular}{ccccc}
   \hline \hline
@@ -147,7 +150,7 @@ Again, I start by quantitatively evaluating the flow networks produced by differ
 
 As before, arrow performance can only be measured on the intersection of links in the inferred skeleton and the gold standard, which will be a smaller or a larger set depending on skeleton performance. Therefore, arrow performance cannot be reliably compared across reconstructions and skeleton inference variants. Still, we can compare the performance of the four directionality inference methods on the RFCI skeleton. This is done in \tabref{contact-arrow-evaluation-nelex}. We see that vanilla FCI performs very poorly on the better skeleton, clearly motivating the use of more advanced collider tests. Interestingly, the hypergeometric test with FCI propagation is outperformed by TSS-based directionality inference on both skeletons, indicating that TSS is a useful general-purpose method that might also be of help in causal inference on other types of noisy data. Finally, the weakness of UFR, its dependence on correctly inferred unshielded triples, becomes a strength on the thinned-out overlap skeleton, where it outperforms all other methods, whereas it performs worse than VCI on the more dense flow separation skeleton.
 
-\begin{table}
+\begin{table}[t]
  \centering
  \begin{tabular}{cccccc}
  \hline \hline
@@ -218,9 +221,9 @@ Secondly, in measuring the influences between \ili{Slavic languages}, \ili{Belar
  \largerpage
  \subsubsection{Case study 2: Uralic and contact languages}
  \begin{sidewaysfigure}
- \includegraphics[width=\textwidth]{figures/uralic-contact-fs-tss.pdf}
+ \includegraphics[width=.9\textwidth]{figures/uralic-contact-fs-tss.pdf}
  \vspace*{5mm}
- \includegraphics[width=\textwidth]{figures/uralic-contact-fs-tss-eval.pdf}
+ \includegraphics[width=.9\textwidth]{figures/uralic-contact-fs-tss-eval.pdf}
  \caption{Result and evaluation of contact flow on Uralic data}
  \label{uralic-result-contact}
  \end{sidewaysfigure}
@@ -321,11 +324,7 @@ The numbers for arrow performance in \tabref{contact-arrow-evaluation-simulated}
  \label{contact-arrow-evaluation-simulated}
 \end{table}
 
-Next, \tabref{contact-variant-comparison-simulated} ranks all the variants of CLFI according to their combined performance score on the simulated data. It is interesting that the performance on NorthEuraLex data is quite consistently much worse than on the simulated data, although as for PLFI, the combination of flow separation with the more robust VCI, TSS and UFR methods does not suffer as much from this. Unlike for CLFI, very different methods end up in the top ranks on simulated and NorthEuraLex data, with only the FS-TSS method staying in one of the top positions across data types. This seems to indicate that the way in which the gold standard was extracted from the simulated data might not be the perfect choice.
-
-Though not the best-performing method on the simulated data, FS-TSS is clearly the best method according to the phylum separation measure. Separating the phyla appears not only to work well in selected example scenarios (such as the Baltic and Uralic case studies), but also across 50 sometimes rather challenging simulated scenarios. This shows that FS-TSS might be a useful tool for discerning different language families in situations which at first sight look rather chaotic.
-
-\begin{table}
+\begin{table}[t]
  \centering
  \begin{tabular}{lrrrrr}
 \hline \hline
@@ -346,5 +345,11 @@ CLFI Variant & simulated & NELex  & difference & rank on NELex & phyloSep\\
  \caption{CLFI variants ranked by combined F-score on the simulated data}
  \label{contact-variant-comparison-simulated}
 \end{table}
+\newpage 
+Next, \tabref{contact-variant-comparison-simulated} ranks all the variants of CLFI according to their combined performance score on the simulated data. It is interesting that the performance on NorthEuraLex data is quite consistently much worse than on the simulated data, although as for PLFI, the combination of flow separation with the more robust VCI, TSS and UFR methods does not suffer as much from this. Unlike for CLFI, very different methods end up in the top ranks on simulated and NorthEuraLex data, with only the FS-TSS method staying in one of the top positions across data types. This seems to indicate that the way in which the gold standard was extracted from the simulated data might not be the perfect choice.
+
+Although it is not the best-performing method on the simulated data, FS-TSS is clearly the best method according to the phylum separation measure. Separating the phyla appears not only to work well in selected example scenarios (such as the Baltic and Uralic case studies), but also across 50 sometimes rather challenging simulated scenarios. This shows that FS-TSS might be a useful tool for discerning different language families in situations which at first sight look rather chaotic.
+
+
 
 Summing up the results of CLFI, we have seen in the case studies that while the problems previously caused by reconstruction have disappeared, the reliability of v-structure tests appears to have dropped in comparison with PLFI. This is perhaps not too surprising, as only the phylogenetic lexical flow paradigm has clear instances of the lexicon of one language being in a very literal sense a mixture of words from other languages. In contrast, contact flow is frequently faced with situations where parts of the overlaps in the triple are actually due to common inheritance, leading to much more unpredictable overlap patterns, and hence to lower performance of v-structure tests. Still, the overall quality of CLFI results was quite comparable with PLFI, giving us another tool for data exploration that also performs quite well at phylum separation.

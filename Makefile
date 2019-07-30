@@ -32,7 +32,7 @@ main.snd: main.bbl
 	sed -i 's/.*Embassy.*//' main.adx
 	sed -i 's/.*Commission.*//' main.adx
 	sed -i 's/Helimskij, E. A./Helimski, Eugene/g' main.adx
-	sed -i 's/\\MakeCapital {([^}]* )}/\1/' main.adx
+	sed -i 's/\\MakeCapital {\([^}]* \)}/\1/' main.adx
 	sed -i 's/hyperindexformat{\\\(infn {[0-9]*\)}/\1/' main.ldx
 	python3 fixindex.py
 	mv mainmod.adx main.adx
