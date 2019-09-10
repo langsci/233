@@ -1,7 +1,1 @@
-{"versions": [{"versiontype": "proofreading",
-		"title": "Information-theoretic causal inference of lexical flow",
-		"authors": [{"name": "Johannes Dellert"}],
-	"license": "CC-BY-4.0",
-	"publishedAt": "2019-03-06T11:51:45.000Z"}
-	]
-}
+{"versions": [{"authors": [{"name": "Johannes Dellert"}], "title": "Information-theoretic causal inference of lexical flow", "publishedAt": "2019-03-06T11:51:45.000Z", "license": "CC-BY-4.0", "versiontype": "proofreading"}, {"title": "Information-theoretic causal inference of lexical flow", "versiontype": "first_edition", "license": "CC-BY-4.0", "publishedAt": "2019-09-10T12:14:50.066390", "authors": [{"name": "Johannes Dellert"}]}]}
